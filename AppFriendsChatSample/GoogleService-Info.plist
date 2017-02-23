@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>993707439690-32of4l0nisuv1corb8i0f8jtd3v3cqpv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.993707439690-32of4l0nisuv1corb8i0f8jtd3v3cqpv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC8ptyJGgSdfdeJIrI3wwqYmNB6Z4jAidM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>993707439690</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hacknocraft.afUISample</string>
+	<key>PROJECT_ID</key>
+	<string>afuisample</string>
+	<key>STORAGE_BUCKET</key>
+	<string>afuisample.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:993707439690:ios:af46d4bc35e834c4</string>
+	<key>DATABASE_URL</key>
+	<string>https://afuisample.firebaseio.com</string>
+</dict>
+</plist>

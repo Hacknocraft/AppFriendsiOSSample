@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GCReceiptTableViewCell" id="KGk-i7-Jjw" customClass="GCReceiptTableViewCell" customModule="AFChatUISample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsc-EK-Y9C">
+                        <rect key="frame" x="20" y="6" width="267" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Sf6-ZT-mhJ"/>
+                            <constraint firstAttribute="width" constant="267" id="ZP9-Tr-pgN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.20784313725490194" green="0.21568627450980393" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MD6-nl-thf">
+                        <rect key="frame" x="20" y="26" width="267" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="nWU-Vr-G6g"/>
+                            <constraint firstAttribute="width" constant="267" id="uH2-tv-uuh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.65098039215686276" green="0.70588235294117641" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MD6-nl-thf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="5ty-Zx-oDp"/>
+                    <constraint firstItem="fsc-EK-Y9C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="POA-8r-wgd"/>
+                    <constraint firstItem="fsc-EK-Y9C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="l8s-R7-SnP"/>
+                    <constraint firstItem="MD6-nl-thf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nV6-5k-CJf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="subtitleLabel" destination="MD6-nl-thf" id="6of-J5-gZG"/>
+                <outlet property="userNameLabel" destination="fsc-EK-Y9C" id="n6l-dP-9PO"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

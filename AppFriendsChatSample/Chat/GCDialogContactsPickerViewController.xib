@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GCDialogContactsPickerViewController" customModule="GCAFDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="receipientBar" destination="w2X-34-UUA" id="Lvz-bc-roL"/>
+                <outlet property="receipientBarHeightConstraint" destination="Q5s-fo-FJK" id="600-HP-4kJ"/>
+                <outlet property="tableView" destination="fxs-zm-VwY" id="Ogt-BE-QVf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2X-34-UUA" customClass="GCReceipientBar" customModule="GCAFDemo" customModuleProvider="target">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Q5s-fo-FJK"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fxs-zm-VwY">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="89v-O6-ckT"/>
+                        <outlet property="delegate" destination="-1" id="Rny-Lz-uMP"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBh-Kf-hlf" userLabel="divider">
+                    <color key="backgroundColor" red="0.65098039215686276" green="0.70588235294117641" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="zuy-S8-Axy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fxs-zm-VwY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Tg-Jo-r5v"/>
+                <constraint firstAttribute="trailing" secondItem="w2X-34-UUA" secondAttribute="trailing" id="0XU-ed-OAL"/>
+                <constraint firstAttribute="bottom" secondItem="fxs-zm-VwY" secondAttribute="bottom" id="2tM-uh-tHb"/>
+                <constraint firstItem="fxs-zm-VwY" firstAttribute="top" secondItem="w2X-34-UUA" secondAttribute="bottom" id="Gqa-Jc-e2o"/>
+                <constraint firstItem="jBh-Kf-hlf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Y9P-tJ-aUW"/>
+                <constraint firstItem="w2X-34-UUA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aF2-cg-hUG"/>
+                <constraint firstItem="jBh-Kf-hlf" firstAttribute="top" secondItem="w2X-34-UUA" secondAttribute="bottom" id="k7x-3Z-UOU"/>
+                <constraint firstItem="w2X-34-UUA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r8V-A2-3lx"/>
+                <constraint firstItem="fxs-zm-VwY" firstAttribute="top" secondItem="w2X-34-UUA" secondAttribute="bottom" id="ttO-rE-rbX"/>
+                <constraint firstAttribute="trailing" secondItem="fxs-zm-VwY" secondAttribute="trailing" id="up6-mc-Y7w"/>
+                <constraint firstAttribute="trailing" secondItem="jBh-Kf-hlf" secondAttribute="trailing" id="vqQ-pf-Etm"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

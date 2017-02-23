@@ -1,0 +1,122 @@
+PODS:
+  - AFDateHelper (3.5.3)
+  - Alamofire (4.3.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
+  - AppFriendsCore (1.1.10.3.1):
+    - Alamofire (~> 4.3.0)
+    - Cloudinary (~> 1.0.15)
+    - CoreStore (~> 3.0.0)
+    - JWT (~> 2.2.0)
+    - Socket.IO-Client-Swift (~> 8.2.0)
+  - AppFriendsFloatingWidget (1.0.0):
+    - AppFriendsCore
+    - AppFriendsUI
+    - RSKImageCropper
+  - AppFriendsUI (1.2.15.3.1):
+    - AFDateHelper (~> 3.5.3)
+    - AlamofireImage (~> 3.1)
+    - AppFriendsCore (~> 1.1.8)
+    - CLTokenInputView (~> 2.3.0)
+    - JGProgressHUD (~> 1.4)
+    - SESlideTableViewCell (~> 0.7.1)
+    - SlackTextViewController (~> 1.9.5)
+  - Base64 (1.1.2)
+  - Cloudinary (1.0.15)
+  - CLTokenInputView (2.3.0)
+  - CoreStore (3.0.3)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
+  - EZSwiftExtensions (1.8)
+  - Fabric (1.6.11)
+  - Firebase/Core (3.13.0):
+    - FirebaseAnalytics (= 3.7.0)
+    - FirebaseCore (= 3.5.0)
+  - Firebase/Messaging (3.13.0):
+    - Firebase/Core
+    - FirebaseMessaging (= 1.2.2)
+  - FirebaseAnalytics (3.7.0):
+    - FirebaseCore (~> 3.5)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.5.0):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.9)
+  - FirebaseMessaging (1.2.2):
+    - FirebaseAnalytics (~> 3.7)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/Logger (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - JGProgressHUD (1.4)
+  - JWT (2.2.0):
+    - Base64 (~> 1.1.2)
+  - Protobuf (3.2.0)
+  - RSKImageCropper (1.6.0)
+  - SESlideTableViewCell (0.7.1)
+  - SlackTextViewController (1.9.5)
+  - Socket.IO-Client-Swift (8.2.0)
+
+DEPENDENCIES:
+  - AppFriendsCore (~> 1.1.10.3.1)
+  - AppFriendsFloatingWidget (~> 1.0.0)
+  - AppFriendsUI (~> 1.2.15.3.1)
+  - Crashlytics
+  - EZSwiftExtensions (~> 1.8)
+  - Fabric
+  - Firebase/Core
+  - Firebase/Messaging
+  - RSKImageCropper (from `https://github.com/Hacknocraft/RSKImageCropper.git`, branch `xcode8.3`)
+  - Socket.IO-Client-Swift (from `https://github.com/Hacknocraft/socket.io-client-swift.git`, branch `swift3.1`)
+
+EXTERNAL SOURCES:
+  RSKImageCropper:
+    :branch: xcode8.3
+    :git: https://github.com/Hacknocraft/RSKImageCropper.git
+  Socket.IO-Client-Swift:
+    :branch: swift3.1
+    :git: https://github.com/Hacknocraft/socket.io-client-swift.git
+
+CHECKOUT OPTIONS:
+  RSKImageCropper:
+    :commit: b007661730af025d36130fdb7df72c0850479d1a
+    :git: https://github.com/Hacknocraft/RSKImageCropper.git
+  Socket.IO-Client-Swift:
+    :commit: 97a60dd00f35d97d5d12d0f9f279881865800302
+    :git: https://github.com/Hacknocraft/socket.io-client-swift.git
+
+SPEC CHECKSUMS:
+  AFDateHelper: e64bcc4a88a07e1d3e62442741b2a164adc02d77
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  AppFriendsCore: 70766f8987d343da671851fd2b57104dbf78e9b9
+  AppFriendsFloatingWidget: dbd4d880e7a47ae845f6af1863a5f8947bd9e076
+  AppFriendsUI: 670f7be05f9918b0ff7fc6296b6a52b7ec55dae3
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
+  Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
+  CLTokenInputView: 9dc1ffb7c9d2d81787e69a63c75bd97b0b2d1e76
+  CoreStore: b57aaae17a796e24b58726ce2aaa7c883456cbf5
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  EZSwiftExtensions: b58e0fe7702e30c4f01bd039658fe84b4fdf5bd5
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Firebase: 5bc34d7b5ff5792e3386c8b28dc6265deeab0da4
+  FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
+  FirebaseCore: 1c0a13bf59bb95cdd19577252499f0ec6a03e999
+  FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
+  FirebaseMessaging: df8267f378580a24174ce7861233aa11d5c90109
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  JGProgressHUD: 1617b0940cf80bb53e8f7d6f0fd69252ea45d6d4
+  JWT: cf73c0ab0dac762df3de8a3f1164352089d97780
+  Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
+  RSKImageCropper: 76c1e8af8a1a57c8eb81f9f22ef1d51d8bacf154
+  SESlideTableViewCell: 459c3ce79b760e8bc015dd83ca84196bd70c11ed
+  SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
+  Socket.IO-Client-Swift: b1fde63949d8c7fcff5d594ea2e7be71e5bb32a6
+
+PODFILE CHECKSUM: e74785996188b4488369b2ab7213671e81e5052c
+
+COCOAPODS: 1.2.0

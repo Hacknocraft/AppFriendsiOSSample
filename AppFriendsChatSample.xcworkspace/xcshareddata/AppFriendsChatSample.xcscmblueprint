@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "339BFCDEB8959CE608BA13F0BCD926E7ADA90161",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5A3C8BA89D43098B762E3DBBE1D4ABDCEA8EF644" : 9223372036854775807,
+    "339BFCDEB8959CE608BA13F0BCD926E7ADA90161" : 9223372036854775807,
+    "9B597723D7091FEA6B42FFC3D3D6949A7739E748" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EB804B30-38DB-47D1-BE6E-929509C76FE2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5A3C8BA89D43098B762E3DBBE1D4ABDCEA8EF644" : "",
+    "339BFCDEB8959CE608BA13F0BCD926E7ADA90161" : "UIFramework\/",
+    "9B597723D7091FEA6B42FFC3D3D6949A7739E748" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AppFriendsChatSample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AppFriendsChatSample\/AppFriendsChatSample.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Hacknocraft\/AppFriendsUI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "339BFCDEB8959CE608BA13F0BCD926E7ADA90161"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/laeroah\/AppFriendsUI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A3C8BA89D43098B762E3DBBE1D4ABDCEA8EF644"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/laeroah\/AppFriendsCore.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9B597723D7091FEA6B42FFC3D3D6949A7739E748"
+    }
+  ]
+}
