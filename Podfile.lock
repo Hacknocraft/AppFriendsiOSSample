@@ -3,7 +3,7 @@ PODS:
   - Alamofire (4.3.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
-  - AppFriendsCore (1.1.10.3.1):
+  - AppFriendsCore (1.1.10):
     - Alamofire (~> 4.3.0)
     - Cloudinary (~> 1.0.15)
     - CoreStore (~> 3.0.0)
@@ -13,7 +13,7 @@ PODS:
     - AppFriendsCore
     - AppFriendsUI
     - RSKImageCropper
-  - AppFriendsUI (1.2.15.3.1):
+  - AppFriendsUI (1.2.15):
     - AFDateHelper (~> 3.5.3)
     - AlamofireImage (~> 3.1)
     - AppFriendsCore (~> 1.1.8)
@@ -62,40 +62,22 @@ PODS:
   - Socket.IO-Client-Swift (8.2.0)
 
 DEPENDENCIES:
-  - AppFriendsCore (~> 1.1.10.3.1)
+  - AppFriendsCore (= 1.1.10)
   - AppFriendsFloatingWidget (~> 1.0.0)
-  - AppFriendsUI (~> 1.2.15.3.1)
+  - AppFriendsUI (= 1.2.15)
   - Crashlytics
   - EZSwiftExtensions (~> 1.8)
   - Fabric
   - Firebase/Core
   - Firebase/Messaging
-  - RSKImageCropper (from `https://github.com/Hacknocraft/RSKImageCropper.git`, branch `xcode8.3`)
-  - Socket.IO-Client-Swift (from `https://github.com/Hacknocraft/socket.io-client-swift.git`, branch `swift3.1`)
-
-EXTERNAL SOURCES:
-  RSKImageCropper:
-    :branch: xcode8.3
-    :git: https://github.com/Hacknocraft/RSKImageCropper.git
-  Socket.IO-Client-Swift:
-    :branch: swift3.1
-    :git: https://github.com/Hacknocraft/socket.io-client-swift.git
-
-CHECKOUT OPTIONS:
-  RSKImageCropper:
-    :commit: b007661730af025d36130fdb7df72c0850479d1a
-    :git: https://github.com/Hacknocraft/RSKImageCropper.git
-  Socket.IO-Client-Swift:
-    :commit: 97a60dd00f35d97d5d12d0f9f279881865800302
-    :git: https://github.com/Hacknocraft/socket.io-client-swift.git
 
 SPEC CHECKSUMS:
   AFDateHelper: e64bcc4a88a07e1d3e62442741b2a164adc02d77
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  AppFriendsCore: 70766f8987d343da671851fd2b57104dbf78e9b9
+  AppFriendsCore: 2aff25939d525a786ee85e093f4b55d5c1fe3bd5
   AppFriendsFloatingWidget: dbd4d880e7a47ae845f6af1863a5f8947bd9e076
-  AppFriendsUI: 670f7be05f9918b0ff7fc6296b6a52b7ec55dae3
+  AppFriendsUI: 014053ad5f16ee5bc38e01854c52f702f311d88e
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
   CLTokenInputView: 9dc1ffb7c9d2d81787e69a63c75bd97b0b2d1e76
@@ -112,11 +94,11 @@ SPEC CHECKSUMS:
   JGProgressHUD: 1617b0940cf80bb53e8f7d6f0fd69252ea45d6d4
   JWT: cf73c0ab0dac762df3de8a3f1164352089d97780
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
-  RSKImageCropper: 76c1e8af8a1a57c8eb81f9f22ef1d51d8bacf154
+  RSKImageCropper: 6903235c7a8a79acb1e1f3490e2c911b858f8208
   SESlideTableViewCell: 459c3ce79b760e8bc015dd83ca84196bd70c11ed
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
-  Socket.IO-Client-Swift: b1fde63949d8c7fcff5d594ea2e7be71e5bb32a6
+  Socket.IO-Client-Swift: 900cf511777045c80d1ce1f11f71261e87765dd1
 
-PODFILE CHECKSUM: e74785996188b4488369b2ab7213671e81e5052c
+PODFILE CHECKSUM: 6a5ccaf86282379696aa024a338ffb7d2f178a2a
 
 COCOAPODS: 1.2.0
