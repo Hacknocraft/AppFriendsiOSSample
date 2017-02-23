@@ -59,7 +59,6 @@
 		AF1A71191DCECCE100778CA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A71171DCECCE100778CA8 /* Main.storyboard */; };
 		AF1A711B1DCECCE100778CA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1A711A1DCECCE100778CA8 /* Assets.xcassets */; };
 		AF1A711E1DCECCE100778CA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A711C1DCECCE100778CA8 /* LaunchScreen.storyboard */; };
-		AF1A71261DCECF1F00778CA8 /* AppFriendsUI.podspec in Resources */ = {isa = PBXBuildFile; fileRef = AF1A71251DCECF1F00778CA8 /* AppFriendsUI.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,7 +116,6 @@
 		AF1A711A1DCECCE100778CA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF1A711D1DCECCE100778CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF1A711F1DCECCE100778CA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF1A71251DCECF1F00778CA8 /* AppFriendsUI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppFriendsUI.podspec; path = ../AppFriendsUI.podspec; sourceTree = "<group>"; };
 		D0725C389F2B8027811B7B52 /* Pods-AppFriendsChatSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsChatSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsChatSample/Pods-AppFriendsChatSample.debug.xcconfig"; sourceTree = "<group>"; };
 		DE547ECE015FF9FA79484F7E /* Pods-AppFriendsChatSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsChatSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsChatSample/Pods-AppFriendsChatSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				AF19CA231DED24CD00180A57 /* user_seeds.json */,
-				AF1A71251DCECF1F00778CA8 /* AppFriendsUI.podspec */,
 				AF1A71121DCECCE100778CA8 /* AppFriendsChatSample */,
 				AF1A71111DCECCE100778CA8 /* Products */,
 				1F4AC2D78DA586209FD97243 /* Pods */,
@@ -317,7 +314,6 @@
 				AF1A711B1DCECCE100778CA8 /* Assets.xcassets in Resources */,
 				AF19CA1E1DED239200180A57 /* Mainipad.storyboard in Resources */,
 				AF19CA131DED217000180A57 /* PlayerSectionHeaderView.xib in Resources */,
-				AF1A71261DCECF1F00778CA8 /* AppFriendsUI.podspec in Resources */,
 				AF19C9B81DED1EBB00180A57 /* GCReceiptTableViewCell.xib in Resources */,
 				AF19C9AE1DED1EBB00180A57 /* GCDialogMembersListViewController.xib in Resources */,
 				AF19C9BF1DED1EBB00180A57 /* Info.plist in Resources */,
