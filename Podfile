@@ -7,8 +7,8 @@ target 'AppFriendsChatSample' do
     
     use_frameworks!
     # Pods for AppFriendsChatSample
-    pod 'AppFriendsUI', '~> 1.2.15.3.1'
-    pod 'AppFriendsCore', '~> 1.1.10.3.1'
+    pod 'AppFriendsUI', '1.2.16'
+    pod 'AppFriendsCore', '1.1.12'
     
 
     # Swift 3.1
