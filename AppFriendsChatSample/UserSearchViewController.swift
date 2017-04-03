@@ -15,7 +15,7 @@ class UserSearchViewController: HCUserSearchViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        let tabBarImage = UIImage.GMDIconWithName(.gmdSearch, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
+        let tabBarImage = UIImage.materialDesignIconWithName(.gmdSearch, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
         let customTabBarItem:UITabBarItem = UITabBarItem(title: "Search", image: tabBarImage.withRenderingMode(.alwaysOriginal), selectedImage: tabBarImage)
         self.tabBarItem = customTabBarItem
     }

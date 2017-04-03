@@ -42,7 +42,7 @@ class ProfileViewController: UITableViewController {
         
         self.title = "Profile"
         
-        let tabBarImage = UIImage.GMDIconWithName(.gmdPerson, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
+        let tabBarImage = UIImage.materialDesignIconWithName(.gmdPerson, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
         let customTabBarItem:UITabBarItem = UITabBarItem(title: "Profile", image: tabBarImage.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: tabBarImage)
         self.tabBarItem = customTabBarItem
         

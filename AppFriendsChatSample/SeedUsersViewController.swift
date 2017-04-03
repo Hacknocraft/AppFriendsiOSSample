@@ -94,7 +94,7 @@ class SeedUsersViewController: BaseViewController, UITableViewDelegate, UITableV
             let nameInfo = data["name"] as! [String: String]
             let userName = "\(nameInfo["first"]!) \(nameInfo["last"]!)"
             let pictureInfo = data["picture"] as! [String: String]
-            let placeholder = UIImage.GMDIconWithName(.gmdPerson, textColor: HCColorPalette.avatarColor, size: CGSize(width: 25, height: 25), backgroundColor: HCColorPalette.avatarBackgroundColor!)
+            let placeholder = UIImage.materialDesignIconWithName(.gmdPerson, textColor: HCColorPalette.avatarColor, size: CGSize(width: 25, height: 25), backgroundColor: HCColorPalette.avatarBackgroundColor!)
             
             if let userAvatar = pictureInfo["thumbnail"], let url = URL(string: userAvatar) {
                 cell.imageView?.af_setImage(withURL: url, placeholderImage: placeholder)

@@ -40,7 +40,7 @@ class GCDialogSettingViewController: HCDialogSettingViewController {
     func rightBarButtonItem() -> UIBarButtonItem {
 
         // close
-        let icon = UIImage.GMDIconWithName(.gmdApps,
+        let icon = UIImage.materialDesignIconWithName(.gmdApps,
                                            textColor: AppFriendsColor.coolGreyLighter ?? UIColor.white,
                                            size: CGSize(width: 40, height: 40))
         let albutItem = UIBarButtonItem(image: icon,

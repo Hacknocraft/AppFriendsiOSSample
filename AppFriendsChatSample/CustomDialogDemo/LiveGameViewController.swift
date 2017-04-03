@@ -18,7 +18,7 @@ class LiveGameViewController: UIViewController, HCSidePanelViewControllerDelegat
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        let tabBarImage = UIImage.GMDIconWithName(.gmdToys, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
+        let tabBarImage = UIImage.materialDesignIconWithName(.gmdToys, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
         let customTabBarItem:UITabBarItem = UITabBarItem(title: "Game", image: tabBarImage.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: tabBarImage)
         self.tabBarItem = customTabBarItem
         

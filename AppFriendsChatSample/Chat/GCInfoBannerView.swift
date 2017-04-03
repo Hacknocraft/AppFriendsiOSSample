@@ -44,7 +44,7 @@ class GCInfoBannerView: UIView, UITextFieldDelegate {
         
         self.closeButton.translatesAutoresizingMaskIntoConstraints = false
         self.closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        self.closeButton.setGMDIcon(.gmdClose, forState: .normal)
+        self.closeButton.setMaterialDesignIcon(.gmdClose, forState: .normal)
         self.closeButton.setTitleColor(AppFriendsColor.blue, for: .normal)
         self.closeButton.addTarget(self, action: #selector(hideAnimated), for: .touchUpInside)
         self.addSubview(self.closeButton)

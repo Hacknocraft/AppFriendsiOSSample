@@ -170,7 +170,7 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
 
                 if UIDevice.current.userInterfaceIdiom == .pad
                 {
-                    let chatView = GCChatViewController(dialog: dialogObject, supportedMessageDataTypes: .all, requireReceipts: true)
+                    let chatView = GCChatViewController(dialog: dialogObject, requireReceipts: true)
                     if let showKeyboard = show {
                         chatView.showKeyboardWhenDisplayed = showKeyboard
                     }
@@ -180,7 +180,7 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
                 else {
 
                     self.title = ""
-                    let chatView = GCChatViewController(dialog: dialogObject, supportedMessageDataTypes: .all, requireReceipts: true)
+                    let chatView = GCChatViewController(dialog: dialogObject, requireReceipts: true)
                     if let showKeyboard = show {
                         chatView.showKeyboardWhenDisplayed = showKeyboard
                     }

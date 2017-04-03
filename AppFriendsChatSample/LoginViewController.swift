@@ -143,7 +143,7 @@ class LoginViewController: BaseViewController {
         
         if let avatar = self.currentUserInfo[HCSDKConstants.kUserAvatar], let url = URL(string: avatar)
         {
-            let placeholder = UIImage.GMDIconWithName(.gmdPerson, textColor: HCColorPalette.avatarColor, size: CGSize(width: 25, height: 25), backgroundColor: HCColorPalette.avatarBackgroundColor!)
+            let placeholder = UIImage.materialDesignIconWithName(.gmdPerson, textColor: HCColorPalette.avatarColor, size: CGSize(width: 25, height: 25), backgroundColor: HCColorPalette.avatarBackgroundColor!)
             self.userAvatarImage.af_setImage(withURL: url, placeholderImage: placeholder)
         }
         else {
