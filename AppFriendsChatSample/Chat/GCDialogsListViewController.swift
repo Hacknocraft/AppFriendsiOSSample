@@ -15,12 +15,15 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: AppFriendsUI.kTotalUnreadMessageCountChangedNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CHAT_PUSH_TAPPED"), object: nil)
     }
     
     override func awakeAfter(using aDecoder: NSCoder) -> Any? {
         
         self.updateTabBarBadge(nil)
         startObservingNewMessagesAndUpdateBadge()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(GCDialogsListViewController.handlePush(notification:)), name: NSNotification.Name(rawValue: "CHAT_PUSH_TAPPED"), object: nil)
         
         return super.awakeAfter(using: aDecoder)
     }
@@ -53,6 +56,15 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
+    }
+
+    func handlePush(notification: Notification) {
+
+        if let dialog = notification.object as? AFDialog {
+            DispatchQueue.main.async(execute: {
+                self.showChatView(id: dialog.id)
+            })
+        }
     }
     
     // MARK: Style the view
@@ -105,25 +117,28 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     // MARK: - GCDialogStarterViewControllerDelegate
     
     func usersSelected(_ users: [String]) {
-        
-        var dialogType = ""
-        if users.count == 1 {
-            dialogType = HCSDKConstants.kMessageTypeIndividual
-        }
-        else {
-            dialogType = HCSDKConstants.kMessageTypeGroup
-        }
-        
+
         self.showLoading("")
-        DialogsManager.sharedInstance.initializeDialog(users, dialogType: dialogType, dialogTitle: nil) { (dialogID, error) in
-            
-            if error != nil {
-                self.showErrorWithMessage(error?.localizedDescription)
-            }
-            else if let id = dialogID{
-                self.hideHUD()
-                self.showChatView(id: id, showKeyboard: true)
-            }
+        if users.count == 1, let userID = users.get(at: 0) {
+            AFDialog.createIndividualDialog(withUser: userID, completion: { (id, error) in
+
+                if error != nil {
+                    self.showErrorWithMessage(error?.localizedDescription)
+                } else if let dialogID = id{
+                    self.hideHUD()
+                    self.showChatView(id: dialogID, showKeyboard: true)
+                }
+            })
+        } else {
+            AFDialog.createGroupDialog(dialogID: nil, members: users, customData: nil, pushData: nil, title: nil, completion: { (id, error) in
+
+                if error != nil {
+                    self.showErrorWithMessage(error?.localizedDescription)
+                } else if let dialogID = id {
+                    self.hideHUD()
+                    self.showChatView(id: dialogID, showKeyboard: true)
+                }
+            })
         }
     }
     
@@ -142,31 +157,36 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let dialog = self.monitor?.objectsInSection(safeSectionIndex: indexPath.section)![indexPath.row]
+        if let dialog = self.dialog(atIndexPath: indexPath)
         {
-            showChatView(id: dialog.dialogID!)
+            showChatView(id: dialog.id)
         }
     }
     
     func showChatView(id dialogID: String, showKeyboard show: Bool? = nil)
     {
-        if UIDevice.current.userInterfaceIdiom == .pad
-        {
-            let chatView = GCChatViewController(dialog: dialogID, supportedMessageDataTypes: .All)
-            if let showKeyboard = show {
-                chatView.showKeyboardWhenDisplayed = showKeyboard
+        AFDialog.getDialog(dialogID: dialogID) { (dialog, error) in
+            if let dialogObject = dialog {
+
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    let chatView = GCChatViewController(dialog: dialogObject, supportedMessageDataTypes: .all, requireReceipts: true)
+                    if let showKeyboard = show {
+                        chatView.showKeyboardWhenDisplayed = showKeyboard
+                    }
+                    let nav = UINavigationController(rootViewController: chatView)
+                    self.navigationController?.splitViewController?.showDetailViewController(nav, sender: self)
+                }
+                else {
+
+                    self.title = ""
+                    let chatView = GCChatViewController(dialog: dialogObject, supportedMessageDataTypes: .all, requireReceipts: true)
+                    if let showKeyboard = show {
+                        chatView.showKeyboardWhenDisplayed = showKeyboard
+                    }
+                    self.navigationController?.pushViewController(chatView, animated: true)
+                }
             }
-            let nav = UINavigationController(rootViewController: chatView)
-            self.navigationController?.splitViewController?.showDetailViewController(nav, sender: self)
-        }
-        else {
-            
-            self.title = ""
-            let chatView = GCChatViewController(dialog: dialogID, supportedMessageDataTypes: .All)
-            if let showKeyboard = show {
-                chatView.showKeyboardWhenDisplayed = showKeyboard
-            }
-            self.navigationController?.pushViewController(chatView, animated: true)
         }
     }
     
@@ -190,8 +210,8 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
                     self.navigationController?.tabBarItem.badgeValue = nil
                 }
             }
-            else if DialogsManager.sharedInstance.totalUnreadMessages > 0 {
-                self.navigationController?.tabBarItem.badgeValue = "\(DialogsManager.sharedInstance.totalUnreadMessages)"
+            else if AFDialog.totalUnreadMessageCount() > 0 {
+                self.navigationController?.tabBarItem.badgeValue = "\(AFDialog.totalUnreadMessageCount())"
             }
             else {
                 self.navigationController?.tabBarItem.badgeValue = nil
@@ -200,16 +220,14 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     }
     
     // MARK: - override 
-    
-    override func listMonitor(_ monitor: ListMonitor<HCChatDialog>, didDeleteObject object: HCChatDialog, fromIndexPath indexPath: IndexPath) {
-        
-        super.listMonitor(monitor, didDeleteObject: object, fromIndexPath: indexPath)
-        
+
+    override func removeDialog(dialog: AFDialog, indexPath: IndexPath) {
+        super.removeDialog(dialog: dialog, indexPath: indexPath)
+
         if UIDevice.current.userInterfaceIdiom == .pad
         {
             // clear the detail view on the right side if you are using a split view on iPad
             self.navigationController?.splitViewController?.showDetailViewController(UIViewController(), sender: self)
         }
     }
-
 }

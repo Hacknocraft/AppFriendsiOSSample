@@ -23,6 +23,7 @@ class ProfileViewController: UITableViewController {
     var _userName: String?
     
     var _userID: String?
+    var _user: AFUser?
     
     init(userID: String?) {
         
@@ -57,10 +58,8 @@ class ProfileViewController: UITableViewController {
         
         // observe new message
         startObservingNewMessagesAndUpdateBadge()
-        
-        DialogsManager.sharedInstance.getTotalUnreadMessageCount({ (count) in
-            self._chatButton?.badge = "\(count)"
-        })
+
+        self._chatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
         
         if _userID == nil
         {
@@ -69,35 +68,26 @@ class ProfileViewController: UITableViewController {
         
         if let currentUserID = _userID
         {
-            AppFriendsUserManager.sharedInstance.fetchUserInfo(currentUserID) { (response, error) in
-                
-                if let json = response as? [String: AnyObject] {
-                    
-                    if let avatar = json[HCSDKConstants.kUserAvatar] as? String {
-                        self._userAvatarUR = avatar
-                    }
-                    
-                    if let userName = json[HCSDKConstants.kUserName] as? String {
-                        self._userName = userName
-                    }
-                    
-                    self.tableView.reloadData()
+            AFUser.getUser(userID: currentUserID, completion: { (user, error) in
+
+                if let avatar = user?.avatarURL {
+                    self._userAvatarUR = avatar
                 }
-            }
-            
-            if _userID == HCSDKCore.sharedInstance.currentUserID()
-            {
-                
-            }
+
+                if let userName = user?.username {
+                    self._userName = userName
+                }
+
+                self._user = user
+                self.tableView.reloadData()
+            })
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        DialogsManager.sharedInstance.getTotalUnreadMessageCount({ (count) in
-            self._chatButton?.badge = "\(count)"
-        })
+
+        self._chatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,7 +117,7 @@ class ProfileViewController: UITableViewController {
             }
             else {
                 
-                self._chatButton?.badge = "\(DialogsManager.sharedInstance.totalUnreadMessages)"
+                self._chatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
             }
         })
     }
@@ -161,44 +151,13 @@ class ProfileViewController: UITableViewController {
             let logoutItem = UIBarButtonItem(customView: logoutButton)
             self.navigationItem.leftBarButtonItem = logoutItem
         }
-        else
-        {
-            // if it's not the current user, we show the follow button
-            
-            if let currentUser = HCUser.currentUser() {
-                
-                _followButton = UIButton(type: .custom)
-                _followButton?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                _followButton?.addTarget(self, action: #selector(ProfileViewController.followButtonTapped(_:)), for: .touchUpInside)
-                
-                if let followingUsers = currentUser.following as? [String], let userID = _userID
-                {
-                    if followingUsers.contains(userID)
-                    {
-                        _followButton?.setImage(UIImage(named: "unfollow"), for: .normal)
-                        
-                    }
-                    else {
-                        
-                        _followButton?.setImage(UIImage(named: "follow"), for: .normal)
-                        
-                    }
-                }
-                else {
-                    
-                    _followButton?.setImage(UIImage(named: "follow"), for: .normal)
-                }
-                let followBarItem = UIBarButtonItem(customView: _followButton!)
-                self.navigationItem.rightBarButtonItem = followBarItem
-            }
-        }
     }
     
     // MARK: - Actions
     
     func logout(_ sender: AnyObject) {
-        
-        AppFriendsUI.sharedInstance.logout { (error) in
+
+        AFSession.logout { (error) in
             if error != nil {
                 
                 self.showAlert("Log Out Error", message: error.debugDescription)
@@ -224,67 +183,10 @@ class ProfileViewController: UITableViewController {
     
     func chat(_ sender: AnyObject) {
         
-        let chatContainer = HCChatContainerViewController(tabs: [HCTitles.dialogsTabTitle, HCTitles.contactsTabTitle])
+        let chatContainer = HCChatContainerViewController(tabs: [HCStringValues.dialogsTabTitle, HCStringValues.contactsTabTitle])
         let nav = UINavigationController(rootViewController: chatContainer)
         nav.navigationBar.setBackgroundImage(UIImage(named: "0D0F27"), for: .default)
         self.presentVC(nav)
-    }
-    
-    func followButtonTapped(_ sender: AnyObject) {
-        
-        if let currentUser = HCUser.currentUser() {
-            
-            if let followingUsers = currentUser.following as? [String], let userID = _userID
-            {
-                if followingUsers.contains(userID)
-                {
-                    self.unfollow(sender)
-                }
-                else {
-                    self.follow(sender)
-                }
-            }
-            else {
-                
-                self.follow(sender)
-            }
-        }
-    }
-    
-    func follow(_ sender: AnyObject) {
-        
-        if let userID = _userID {
-            
-            AppFriendsUserManager.sharedInstance.followUser(userID, completion: { (response, error) in
-                
-                if let err = error
-                {
-                    self.showAlert("follow user failed", message: err.localizedDescription)
-                }
-                else {
-                    self.showAlert("", message: "You are now following this user")
-                    self._followButton?.setImage(UIImage(named: "unfollow"), for: .normal)
-                }
-            })
-        }
-    }
-    
-    func unfollow(_ sender: AnyObject) {
-        
-        if let userID = _userID {
-            
-            AppFriendsUserManager.sharedInstance.unfollowUser(userID, completion: { (response, error) in
-                
-                if let err = error
-                {
-                    self.showAlert("Unfollow user failed", message: err.localizedDescription)
-                }
-                else {
-                    self.showAlert("", message: "You unfollowed this user")
-                    self._followButton?.setImage(UIImage(named: "follow"), for: .normal)
-                }
-            })
-        }
     }
     
     // MARK: show alert
@@ -301,15 +203,15 @@ class ProfileViewController: UITableViewController {
     // MARK: go to chat
     
     func showChatView(_ userID: String) {
-        
-        DialogsManager.sharedInstance.initializeDialog([userID], dialogType: HCSDKConstants.kMessageTypeIndividual, dialogTitle: nil) { (dialogID, error) in
-            
-            if error != nil {
-                NSLog("\(error?.localizedDescription)")
+
+        AFDialog.createIndividualDialog(withUser: userID) { (dialogID, error) in
+
+            if let err = error {
+                NSLog("\(err.localizedDescription)")
             }
-            else {
+            else if let id = dialogID {
                 self.title = ""
-                let dialogVC = HCDialogChatViewController(dialog: userID)
+                let dialogVC = HCDialogChatViewController(dialogID: id, supportedMessageDataTypes: .all, requireReceipts: true, shouldAllowTagging: true)
                 self.navigationController?.pushViewController(dialogVC, animated: true)
             }
         }
@@ -324,7 +226,7 @@ class ProfileViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if HCSDKCore.sharedInstance.isLogin() {
+        if AFSession.isLoggedIn() {
             
             if self.isCurrentUsr() {
                 return 1
@@ -341,60 +243,46 @@ class ProfileViewController: UITableViewController {
         
         // start a chat with this user
         if (indexPath as NSIndexPath).row == 1, let userID = _userID {
-            
-            // find the existing or create an individual chat dialog
-            CoreStoreManager.store()?.beginAsynchronous({ (transaction) in
-                
-                if HCChatDialog.findDialog(userID, transaction: transaction) != nil
-                {
-                    DispatchQueue.main.async {
-                        self.showChatView(userID)
-                    }
+
+            AFDialog.createIndividualDialog(withUser: userID) { (dialogID, error) in
+
+                if let err = error, let description = error?.localizedDescription {
+                    NSLog("\(err.localizedDescription)")
+                    self.showAlert("Error", message: description)
                 }
-                else {
-                    
-                    let _ = HCChatDialog.findOrCreateDialog(userID, members: [userID], dialogTitle: self._userName, dialogType: HCSDKConstants.kMessageTypeIndividual, transaction: transaction)
-                    
-                    transaction.commit({ (result) in
-                        
-                        if result.boolValue
-                        {
-                            self.showChatView(userID)
-                        }
-                    })
+                else if let id = dialogID {
+                    self.showChatView(id)
                 }
-                
-            })
+            }
 
         }
         else if (indexPath as NSIndexPath).row == 2, let userID = _userID {
-            
-            if let user = CoreStoreManager.store()?.fetchOne(From(HCUser.self), Where("userID == %@", userID))
-            {
-                if let blocked = user.blocked?.boolValue , blocked == true {
-                    
-                    AppFriendsUserManager.sharedInstance.unblockUser(userID, completion: { (response, error) in
-                        if let err = error {
-                            self.showAlert("Error", message: err.localizedDescription)
-                        }
-                        else {
-                            self.showAlert("Success", message: "You have unblocked the user")
-                            self.tableView.reloadData()
-                        }
-                    })
-                }
-                else {
-                    
-                    AppFriendsUserManager.sharedInstance.blockUser(userID, completion: { (response, error) in
-                        if let err = error {
-                            self.showAlert("Error", message: err.localizedDescription)
-                        }
-                        else {
-                            self.showAlert("Success", message: "You have blocked the user")
-                            self.tableView.reloadData()
-                        }
-                    })
-                }
+
+            if let user = _user, user.blocked {
+
+                AFUser.unblockUser(userID: userID, completion: { (error) in
+
+                    if let err = error {
+                        self.showAlert("Error", message: err.localizedDescription)
+                    }
+                    else {
+                        self.showAlert("Success", message: "You have unblocked the user")
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+            else {
+
+                AFUser.blockUser(userID: userID, completion: { (error) in
+
+                    if let err = error {
+                        self.showAlert("Error", message: err.localizedDescription)
+                    }
+                    else {
+                        self.showAlert("Success", message: "You have blocked the user")
+                        self.tableView.reloadData()
+                    }
+                })
             }
         }
     }
@@ -425,18 +313,12 @@ class ProfileViewController: UITableViewController {
             let blockCell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
             blockCell.accessoryType = .none
             
-            if let userID = _userID, let user = CoreStoreManager.store()?.fetchOne(From(HCUser.self), Where("userID == %@", userID))
-            {
-                if let blocked = user.blocked?.boolValue , blocked == true {
-                    
-                    blockCell.textLabel!.text = "Unblock"
-                }
-                else {
-                    
-                    blockCell.textLabel!.text = "Block"
-                }
+            if let user = _user, user.blocked {
+                blockCell.textLabel?.text = "Unblock"
+            } else {
+                blockCell.textLabel!.text = "Block"
             }
-            
+
             return blockCell
         }
     }

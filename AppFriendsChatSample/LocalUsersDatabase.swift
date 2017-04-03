@@ -36,14 +36,23 @@ class UsersDataBase
                 }
             }
         }
+
+        userInfos.sort { (userA, userB) -> Bool in
+            if let nameA = userA["name"] as? [String: String],
+                let nameB = userB["name"] as? [String: String],
+                let firstNameA =  nameA["first"], let firstNameB =  nameB["first"] {
+                return firstNameA.compare(firstNameB) == .orderedAscending
+            }
+            return false
+        }
     }
     
     func findUserName(_ userID: String) -> String?{
         
         if userID == HCSDKCore.sharedInstance.currentUserID() {
             
-            let user = HCUser.currentUser()
-            return user?.userName
+            let user = AFUser.currentUser()
+            return user?.username
         }
         
         for userInfo in userInfos {
@@ -64,8 +73,8 @@ class UsersDataBase
         
         if userID == HCSDKCore.sharedInstance.currentUserID() {
             
-            let user = HCUser.currentUser()
-            return user?.userName
+            let user = AFUser.currentUser()
+            return user?.username
         }
         
         for userInfo in userInfos {

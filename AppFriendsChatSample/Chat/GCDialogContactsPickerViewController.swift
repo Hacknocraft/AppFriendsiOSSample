@@ -224,14 +224,13 @@ class GCDialogContactsPickerViewController: BaseViewController, UITableViewDeleg
         }
     }
     
-    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   sectionForSectionIndexTitle title: String,
+                   at index: Int) -> Int {
         
-        if let keys = filteredSectionKeys, let section = keys.indexesOf(title).first
-        {
+        if let keys = filteredSectionKeys, let section = keys.indexes(of: title).first {
             return section
-        }
-        else if let section = sectionKeys.indexesOf(title).first
-        {
+        } else if let section = sectionKeys.indexes(of: title).first {
             return section
         }
         
@@ -365,7 +364,7 @@ class GCDialogContactsPickerViewController: BaseViewController, UITableViewDeleg
         if let userID = token.context as? String {
             
             if userSelectedIDs.contains(userID) {
-                userSelectedIDs.removeObject(userID)
+                userSelectedIDs.removeFirst(userID)
                 self.tableView.reloadData()
             }
         }

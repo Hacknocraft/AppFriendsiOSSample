@@ -10,31 +10,22 @@ import UIKit
 
 import AppFriendsUI
 
-class GCDialogMembersListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, GCDialogContactsPickerViewControllerDelegate {
+class GCDialogMembersListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, GCDialogContactsPickerViewControllerDelegate, AFEventSubscriber {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var userInfos: [[String: AnyObject]] = [[String: AnyObject]]()
-    var _members: [String]?
-    var _dialogID: String
+    var _members: [AFUser]?
+    var _dialog: AFDialog
     
-    init(members: [String], dialogID: String) {
+    init(dialog: AFDialog) {
         
-        _members = members
-        _dialogID = dialogID
+        _members = dialog.members
+        _dialog = dialog
         
         super.init(nibName: "GCDialogMembersListViewController", bundle: nil)
         
-        let users = UsersDataBase.sharedInstance.userInfos
-        for userInfo in users {
-            let loginInfo = userInfo["login"] as! [String: String]
-            if let userID = loginInfo["md5"] , members.contains(userID)
-            {
-                userInfos.append(userInfo)
-            }
-        }
-        
         self.title = title
+        AFEvent.subscribe(subscriber: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -86,20 +77,28 @@ class GCDialogMembersListViewController: BaseViewController, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.userInfos.count
+        if let members = _members {
+            return members.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GCContactTableViewCell", for: indexPath) as! GCContactTableViewCell
-        
-        let userInfo = self.userInfos[(indexPath as NSIndexPath).row]
-        let nameInfo = userInfo["name"] as! [String: String]
-        let userName = "\(nameInfo["first"]!) \(nameInfo["last"]!)"
-        cell.userNameLabel.text = userName
-        cell.userNameLabel.textColor = AppFriendsColor.charcoalGrey!
-        cell.selectionStyle = .none
-        
+
+        if let member = self._members?[(indexPath as NSIndexPath).row] {
+
+            if member.username.isEmpty {
+                cell.userNameLabel.text = UsersDataBase.sharedInstance.findUserName(member.id)
+            } else {
+                cell.userNameLabel.text = member.username
+            }
+            cell.userNameLabel.textColor = AppFriendsColor.charcoalGrey!
+            cell.selectionStyle = .none
+        }
+
         return cell
     }
     
@@ -130,8 +129,14 @@ class GCDialogMembersListViewController: BaseViewController, UITableViewDelegate
     }
     
     func addMember() {
-        
-        let contactSelectionVC = GCDialogContactsPickerViewController(viewTitle:"Add Members" ,excludeUsers: _members)
+
+        var memberIDs = [String]()
+        if let members = _members {
+            for member in members{
+                memberIDs.append(member.id)
+            }
+        }
+        let contactSelectionVC = GCDialogContactsPickerViewController(viewTitle:"Add Members" ,excludeUsers: memberIDs)
         contactSelectionVC.delegate = self
         self.navigationController?.pushViewController(contactSelectionVC, animated: true)
     }
@@ -139,28 +144,27 @@ class GCDialogMembersListViewController: BaseViewController, UITableViewDelegate
     // MARK: - GCDialogContactsPickerViewControllerDelegate
     
     func usersSelected(_ users: [String]) {
-        
-        DialogsManager.sharedInstance.addMembersToDialog(_dialogID, members: users, completion: { (error) in
-            
+
+        _dialog.addMembers(newMembers: users) { (error) in
+
             if error != nil {
                 self.showErrorWithMessage(error?.localizedDescription)
             }
             else if users.count > 0 {
                 self.showSuccessWithMessage("Added \(users.count) members.")
-                
-                let allUsers = UsersDataBase.sharedInstance.userInfos
-                for userInfo in allUsers {
-                    let loginInfo = userInfo["login"] as! [String: String]
-                    if let userID = loginInfo["md5"] , users.contains(userID)
-                    {
-                        self.userInfos.append(userInfo)
-                    }
-                }
-                
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppFriendsUI.kDialogUpdateNotification), object: self._dialogID, userInfo: nil)
-                
-                self.tableView?.reloadData()
             }
-        })
+        }
+    }
+
+    // MARK: - AFEventSubscriber
+
+    func emitEvent(_ event: AFEvent) {
+
+        if event.name == .eventDialogUpdated,
+            let dialog = event.data as? AFDialog,
+            dialog.id == self._dialog.id {
+            _members = dialog.members
+            self.tableView?.reloadData()
+        }
     }
 }

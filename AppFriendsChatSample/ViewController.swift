@@ -22,7 +22,7 @@ class ViewController: UIViewController {
             
             if success {
                 let appFriendsCore = HCSDKCore.sharedInstance
-                if appFriendsCore.isLogin() {
+                if appFriendsCore.isLoggedIn() {
                 }
                 else {
                 }

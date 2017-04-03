@@ -37,7 +37,7 @@ class ScheduleGameViewController: BaseViewController {
     
     @IBAction func doneButtonTapped(_ sender: AnyObject) {
         
-        if !HCSDKCore.sharedInstance.isLogin() {
+        if !AFSession.isLoggedIn() {
             self.showErrorWithMessage("You are not logged in to AppFriends!")
             return
         }
@@ -52,18 +52,6 @@ class ScheduleGameViewController: BaseViewController {
             return
         }
         
-        self.showLoading("Scheduling Game")
-        
-        let json = gameJSON()
-        DialogsManager.sharedInstance.createGroupDialog([String](), muted: true, customJSON: json, dialogTitle: nil) { [weak self](response, error) in
-            
-            if let err = error {
-                self?.showErrorWithMessage(err.localizedDescription)
-            }
-            else {
-                _ = self?.navigationController?.popViewController(animated: true)
-            }
-        }
     }
 
     func gameJSON() -> NSDictionary {

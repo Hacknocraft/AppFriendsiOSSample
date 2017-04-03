@@ -39,9 +39,9 @@ class InviteUserViewController: HCUserSearchViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.backgroundColor = self.view.backgroundColor
         
-        if let user = self.userAtIndexPath(indexPath), let userID = user.userID
+        if let user = self.userAtIndexPath(indexPath)
         {
-            if selectedUserIDs.contains(userID) {
+            if selectedUserIDs.contains(user.id) {
                 
                 cell.accessoryType = .checkmark
             }
@@ -55,13 +55,13 @@ class InviteUserViewController: HCUserSearchViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let user = self.userAtIndexPath(indexPath), let userID = user.userID
+        if let user = self.userAtIndexPath(indexPath)
         {
-            if selectedUserIDs.contains(userID) {
-                selectedUserIDs.removeObject(userID)
+            if selectedUserIDs.contains(user.id) {
+                selectedUserIDs.removeFirst(user.id)
             }
             else {
-                selectedUserIDs.append(userID)
+                selectedUserIDs.append(user.id)
             }
         }
         

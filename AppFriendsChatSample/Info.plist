@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>75</string>
+	<string>94</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -36,6 +36,10 @@
 	</dict>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -45,6 +49,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Add account photo and share new photo/video</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Send location Message</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Recrod video</string>
 	<key>NSPhotoLibraryUsageDescription</key>

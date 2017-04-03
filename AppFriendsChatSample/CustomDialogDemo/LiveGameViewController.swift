@@ -61,7 +61,7 @@ class LiveGameViewController: UIViewController, HCSidePanelViewControllerDelegat
         sidePanelVC.delegate = self
     }
     
-    func widgetMessagePreviewTapped(dialogID: String, messageID: String, widget: HCFloatingWidget) {
+    private func widgetMessagePreviewTapped(dialogID: String, messageID: String, widget: HCFloatingWidget) {
         
     }
 

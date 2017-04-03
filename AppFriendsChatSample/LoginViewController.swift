@@ -35,8 +35,7 @@ class LoginViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let appFriendsCore = HCSDKCore.sharedInstance
-        if !appFriendsCore.isLogin() {
+        if !AFSession.isLoggedIn() {
             self.currentUserInfo[HCSDKConstants.kUserID] = nil
             self.currentUserInfo[HCSDKConstants.kUserName] = nil
         }
@@ -84,8 +83,7 @@ class LoginViewController: BaseViewController {
         AppFriendsUI.sharedInstance.initialize(key, secret: secret) { (success, error) in
             
             if success {
-                let appFriendsCore = HCSDKCore.sharedInstance
-                if appFriendsCore.isLogin() {
+                if AFSession.isLoggedIn() {
                     self.fetchCurrentUserInfo()
                 }
                 else {
@@ -108,25 +106,21 @@ class LoginViewController: BaseViewController {
         
         DispatchQueue.main.async { 
             
-            let appFriendsCore = HCSDKCore.sharedInstance
-            if appFriendsCore.isLogin(), let currentUserID = appFriendsCore.currentUserID() {
+            if AFSession.isLoggedIn(), let currentUserID = HCSDKCore.sharedInstance.currentUserID() {
                 
                 self.showLoading("loading user info")
-                AppFriendsUserManager.sharedInstance.fetchUserInfo(currentUserID, completion: { [weak self](response, error) in
-                    
+                AFUser.getUser(userID: currentUserID, completion: { [weak self] (user, error) in
+
                     if let err = error {
                         self?.showErrorWithMessage(err.localizedDescription)
                     }
                     else
                     {
                         self?.hideHUD()
-                        if let json = response as? [String: AnyObject]
-                        {
-                            self?.currentUserInfo[HCSDKConstants.kUserName] = json[HCSDKConstants.kUserName] as? String
-                            self?.currentUserInfo[HCSDKConstants.kUserAvatar] = json[HCSDKConstants.kUserAvatar] as? String
-                            self?.currentUserInfo[HCSDKConstants.kUserID] = json[HCSDKConstants.kUserID] as? String
-                            self?.layoutViews()
-                        }
+                        self?.currentUserInfo[HCSDKConstants.kUserName] = user?.username
+                        self?.currentUserInfo[HCSDKConstants.kUserAvatar] = user?.avatarURL
+                        self?.currentUserInfo[HCSDKConstants.kUserID] = user?.id
+                        self?.layoutViews()
                     }
                 })
             }
@@ -135,8 +129,7 @@ class LoginViewController: BaseViewController {
     
     func layoutViews() {
         
-        let appFriendsCore = HCSDKCore.sharedInstance
-        if appFriendsCore.isLogin() {
+        if AFSession.isLoggedIn() {
             self.leftButton.setTitle("Log Out", for: UIControlState())
             self.rightButton.setTitle("Continue", for: UIControlState())
         }
@@ -195,10 +188,10 @@ class LoginViewController: BaseViewController {
 
     @IBAction func leftButtonTapped(_ sender: AnyObject) {
         
-        let appFriendsCore = HCSDKCore.sharedInstance
-        if appFriendsCore.isLogin() {
-            
-            AppFriendsUI.sharedInstance.logout()
+        if AFSession.isLoggedIn() {
+
+            AFPushNotification.unregisterDeviceForPushNotification(completion: nil)
+            AFSession.logout()
             
             // reset the view after logout
             currentUserInfo.removeAll()
@@ -243,8 +236,7 @@ class LoginViewController: BaseViewController {
     
     @IBAction func rightButtonTapped(_ sender: AnyObject) {
         
-        let appFriendsCore = HCSDKCore.sharedInstance
-        if appFriendsCore.isLogin() {
+        if AFSession.isLoggedIn() {
             self.goToMainView()
         }
         else {
@@ -261,36 +253,37 @@ class LoginViewController: BaseViewController {
                 self.currentUserInfo[HCSDKConstants.kUserID] = "test"
                 self.currentUserInfo[HCSDKConstants.kUserName] = "test"
             }
-            
-            self.showLoading("logging in ...")
-            appFriendsCore.loginWithUserInfo(self.currentUserInfo as [String : AnyObject]?)
-            { (response, error) in
-                
-                if let err = error {
-                    self.showErrorWithMessage(err.localizedDescription)
-                }
-                else {
-                    
-                    if let currentUserID = HCSDKCore.sharedInstance.currentUserID(),
-                        let avatar = self.currentUserInfo[HCSDKConstants.kUserAvatar]
-                    {
-                        AppFriendsUserManager.sharedInstance.updateUserInfo(currentUserID, userInfo: [HCSDKConstants.kUserAvatar: avatar as AnyObject], completion: { (response, error) in
-                            
-                            self.hideHUD()
-                            self.goToMainView()
-                        })
+
+            if let username = self.currentUserInfo[HCSDKConstants.kUserName],
+                let userID = self.currentUserInfo[HCSDKConstants.kUserID] {
+
+                self.showLoading("logging in ...")
+                AFSession.login(username: username, userID: userID, completion: { (token, error) in
+                    if let err = error {
+                        self.showErrorWithMessage(err.localizedDescription)
                     }
                     else {
-                        self.hideHUD()
-                        self.goToMainView()
+
+                        if let avatar = self.currentUserInfo[HCSDKConstants.kUserAvatar]
+                        {
+                            AFUser.updateUserAvatar(avatar: avatar, completion: { (error) in
+                                // ignoring error here
+                                self.hideHUD()
+                                self.goToMainView()
+                            })
+                        }
+                        else {
+                            self.hideHUD()
+                            self.goToMainView()
+                        }
+
+                        // register for push notification
+                        if let currentUserID = HCSDKCore.sharedInstance.currentUserID(), let pushToken = FIRInstanceID.instanceID().token()
+                        {
+                            HCSDKCore.sharedInstance.registerDeviceForPush(currentUserID, pushToken: pushToken)
+                        }
                     }
-                    
-                    // register for push notification
-                    if let currentUserID = HCSDKCore.sharedInstance.currentUserID(), let pushToken = FIRInstanceID.instanceID().token()
-                    {
-                        HCSDKCore.sharedInstance.registerDeviceForPush(currentUserID, pushToken: pushToken)
-                    }
-                }
+                })
             }
         }
     }

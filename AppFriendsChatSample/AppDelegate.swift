@@ -28,11 +28,11 @@ enum AppFriendsEnvironment {
 }
 
 struct Environment {
-    static let current: AppFriendsEnvironment = .production
+    static let current: AppFriendsEnvironment = .sandbox
 };
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, UITabBarControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, UITabBarControllerDelegate, AFEventSubscriber {
 
     var window: UIWindow?
 
@@ -77,6 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         FIRApp.configure()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTabBarBadge), name: NSNotification.Name(rawValue: AppFriendsUI.kTotalUnreadMessageCountChangedNotification), object: nil)
+
+        // listen to AppFriends Event
+        AFEvent.subscribe(subscriber: self)
+
+        NSLog(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
         
         return true
     }
@@ -92,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
             else {
                 
-                UIApplication.shared.applicationIconBadgeNumber = DialogsManager.sharedInstance.totalUnreadMessages
+                UIApplication.shared.applicationIconBadgeNumber = AFDialog.totalUnreadMessageCount()
             }
         })
     }
@@ -106,6 +111,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func applicationDidEnterBackground(_ application: UIApplication) {
         FIRMessaging.messaging().disconnect()
         print("Disconnected from FCM.")
+
+        UIApplication.shared.applicationIconBadgeNumber = AFDialog.totalUnreadMessageCount()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -137,13 +144,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     {
         // Received remote notification.
         // You can navigate app or process data here
-        HCSDKCore.sharedInstance.application(UIApplication.shared, didReceiveRemoteNotification: userInfo)
-        if HCSDKCore.sharedInstance.isLogin(), let aps = userInfo["aps"] as? [AnyHashable: Any] {
+        AFPushNotification.processPushNotification(notificationUserInfo: userInfo)
+        if AFSession.isLoggedIn(), let aps = userInfo["aps"] as? [AnyHashable: Any] {
             if let category = aps["category"] as? String, category == HCSDKConstants.kAppFriendsPushCategory, let dialogID = userInfo["dialog_id"] as? String {
-                
-                let chatVC = GCChatViewController(dialog: dialogID)
-                let nav = UINavigationController(rootViewController: chatVC)
-                window?.rootViewController?.presentVC(nav)
+
+                AFDialog.getDialog(dialogID: dialogID, completion: { (dialog, error) in
+                    if let dialogObject = dialog {
+
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CHAT_PUSH_TAPPED"), object: dialogObject)
+                    }
+                })
             }
         }
     }
@@ -183,12 +193,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         HCColorPalette.tableSectionSeparatorColor = AppFriendsColor.coolGray!
         HCColorPalette.tableBackgroundColor =  AppFriendsColor.coolGreyLighter!
         HCColorPalette.normalTextColor = AppFriendsColor.charcoalGrey!
+
+        HCColorPalette.navigationBarTitleColor = AppFriendsColor.charcoalGrey!
+
+        //Album
+//        HCColorPalette.albumBackgroundColor = UIColor.white
+//        HCColorPalette.albumSectionBackgroundColor = UIColor(hexString: "d6d6d6")
+//        HCColorPalette.albumSectionTitleColor = UIColor(hexString: "35373d")
+//        HCColorPalette.albumItemBackgroundColor = UIColor(hexString: "a6b4bf")
+//        HCColorPalette.albumNavigationBarIconColor = AppFriendsColor.ceruLean
+//        HCColorPalette.albumNavigationBarTitleColor = UIColor.black
+//        HCColorPalette.albumNavigationBackgroundColor = UIColor.white
     }
     
     // MARK: Push notification
     
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        
         
         print("didRegisterUserNotificationSettings")
     }
@@ -202,7 +222,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         #endif
         
         // register for push notification
-        if HCSDKCore.sharedInstance.isLogin(), let pushToken = FIRInstanceID.instanceID().token(), let currentUserID = HCSDKCore.sharedInstance.currentUserID()
+        if AFSession.isLoggedIn(), let pushToken = FIRInstanceID.instanceID().token(), let currentUserID = HCSDKCore.sharedInstance.currentUserID()
         {
             HCSDKCore.sharedInstance.registerDeviceForPush(currentUserID, pushToken: pushToken)
         }
@@ -232,7 +252,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         connectToFcm()
         
         // register for push notification
-        if HCSDKCore.sharedInstance.isLogin(), let pushToken = FIRInstanceID.instanceID().token(), let currentUserID = HCSDKCore.sharedInstance.currentUserID()
+        if AFSession.isLoggedIn(), let pushToken = FIRInstanceID.instanceID().token(), let currentUserID = HCSDKCore.sharedInstance.currentUserID()
         {
             HCSDKCore.sharedInstance.registerDeviceForPush(currentUserID, pushToken: pushToken)
         }
@@ -268,6 +288,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         fromVC.dismissVC(completion: nil)
         
         return nil
+    }
+
+    // MARK: - AFEventSubscriber
+    func emitEvent(_ event: AFEvent) {
+        if event.name == .eventDuplicateSession {
+
+            let popup = UIAlertController(title: "Duplicate Session", message: "The same account logged in somewhere else!", preferredStyle: .alert)
+            popup.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
+
+            }))
+            self.window?.rootViewController?.presentVC(popup)
+        }
     }
     
 }

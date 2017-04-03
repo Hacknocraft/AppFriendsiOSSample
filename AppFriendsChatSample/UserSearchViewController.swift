@@ -34,7 +34,7 @@ class UserSearchViewController: HCUserSearchViewController {
         
         if let user = self.userAtIndexPath(indexPath)
         {
-            let profileVC = ProfileViewController(userID: user.userID)
+            let profileVC = ProfileViewController(userID: user.id)
             self.pushVC(profileVC)
         }
     }
