@@ -12,7 +12,9 @@ import CoreStore
 import AppFriendsUI
 
 class GCDialogsListViewController: HCDialogsListViewController, GCDialogContactsPickerViewControllerDelegate {
-    
+
+    var showingDialog = false
+
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: AppFriendsUI.kTotalUnreadMessageCountChangedNotification), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CHAT_PUSH_TAPPED"), object: nil)
@@ -51,6 +53,8 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
         
         super.viewWillAppear(animated)
         self.title = "Conversations"
+
+        showingDialog = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -165,6 +169,10 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     
     func showChatView(id dialogID: String, showKeyboard show: Bool? = nil)
     {
+        if showingDialog {
+            return
+        }
+        showingDialog = true
         AFDialog.getDialog(dialogID: dialogID) { (dialog, error) in
             if let dialogObject = dialog {
 

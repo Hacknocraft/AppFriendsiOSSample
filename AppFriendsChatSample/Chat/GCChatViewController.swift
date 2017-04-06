@@ -156,6 +156,22 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
         
         // respond to link click
         super.linkTapped(inCell: cell, url: url)
+
+        if let scheme = url.scheme?.lowercased() {
+
+            switch scheme {
+            case "hash" :
+                break
+            case "mention" :
+                break
+            case "https" :
+                fallthrough
+            case "http" :
+                UIApplication.shared.openURL(url)
+                break
+            default: break
+            }
+        }
     }
     
     // MARK: - override chat UI

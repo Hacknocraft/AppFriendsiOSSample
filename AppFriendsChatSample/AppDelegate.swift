@@ -28,7 +28,7 @@ enum AppFriendsEnvironment {
 }
 
 struct Environment {
-    static let current: AppFriendsEnvironment = .sandbox
+    static let current: AppFriendsEnvironment = .production
 };
 
 @UIApplicationMain
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             // For remote Notification
             if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as! [AnyHashable: Any]? {
                 
-                self.processRemoteNotification(remoteNotification)
+                self.processRemoteNotification(remoteNotification, application: application)
             }
         }
         
@@ -135,22 +135,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Print full message.
         print("%@", userInfo)
         
-        processRemoteNotification(userInfo)
+        processRemoteNotification(userInfo, application: application)
     }
 
     // MARK: process notification
     
-    func processRemoteNotification(_ userInfo: [AnyHashable: Any])
+    func processRemoteNotification(_ userInfo: [AnyHashable: Any], application: UIApplication)
     {
         // Received remote notification.
         // You can navigate app or process data here
-        AFPushNotification.processPushNotification(notificationUserInfo: userInfo)
+        _ = AFPushNotification.processPushNotification(notificationUserInfo: userInfo)
         if AFSession.isLoggedIn(), let aps = userInfo["aps"] as? [AnyHashable: Any] {
             if let category = aps["category"] as? String, category == HCSDKConstants.kAppFriendsPushCategory, let dialogID = userInfo["dialog_id"] as? String {
 
+                // push tapped
                 AFDialog.getDialog(dialogID: dialogID, completion: { (dialog, error) in
                     if let dialogObject = dialog {
-
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CHAT_PUSH_TAPPED"), object: dialogObject)
                     }
                 })
