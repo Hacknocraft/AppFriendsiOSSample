@@ -55,7 +55,7 @@ PODS:
   - JGProgressHUD (1.4)
   - JWT (2.2.0):
     - Base64 (~> 1.1.2)
-  - Protobuf (3.2.0)
+  - Protobuf (3.2.1)
   - RSKImageCropper (1.6.1)
   - SESlideTableViewCell (0.7.1)
   - SlackTextViewController (1.9.5)
@@ -93,7 +93,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   JGProgressHUD: 1617b0940cf80bb53e8f7d6f0fd69252ea45d6d4
   JWT: cf73c0ab0dac762df3de8a3f1164352089d97780
-  Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
+  Protobuf: 2ccbaf193f6c65adc67745453ca0c13234c32796
   RSKImageCropper: 0df8c99e77a8ea7ca7a8b83ef468556f31584254
   SESlideTableViewCell: 459c3ce79b760e8bc015dd83ca84196bd70c11ed
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
