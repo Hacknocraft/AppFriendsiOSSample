@@ -157,26 +157,32 @@ class ProfileViewController: UITableViewController {
     
     func logout(_ sender: AnyObject) {
 
-        AFSession.logout { (error) in
-            if error != nil {
-                
-                self.showAlert("Log Out Error", message: error.debugDescription)
-            }
-            else {
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-                
-                if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-                    
-                    UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromLeft, animations: {
-                        
-                        window.rootViewController = loginVC
-                        
-                    },completion: { (finished) in
-                        
-                    })
+        AFPushNotification.unregisterDeviceForPushNotification { (error) in
+            if error == nil {
+
+                AFSession.logout { (error) in
+                    if error != nil {
+                        self.showAlert("Log Out Error", message: error?.localizedDescription ?? "")
+                    }
+                    else {
+
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+
+                        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+
+                            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromLeft, animations: {
+
+                                window.rootViewController = loginVC
+
+                            },completion: { (finished) in
+
+                            })
+                        }
+                    }
                 }
+            } else {
+                self.showAlert("unregister device failed!", message: error?.localizedDescription ?? "")
             }
         }
     }

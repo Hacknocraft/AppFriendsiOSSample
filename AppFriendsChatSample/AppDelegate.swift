@@ -27,10 +27,6 @@ enum AppFriendsEnvironment {
     case production, sandbox, testing, staging
 }
 
-struct Environment {
-    static let current: AppFriendsEnvironment = .production
-};
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, UITabBarControllerDelegate, AFEventSubscriber {
 
@@ -41,22 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         HCSDKCore.sharedInstance.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         styleApp ()
-        
-        let appFriendsCore = HCSDKCore.sharedInstance
-        appFriendsCore.enableDebug()
-        
-        if Environment.current == .sandbox
-        {
-            appFriendsCore.setValue(true, forKey: "useSandbox")
-        }
-        else if (Environment.current == .staging)
-        {
-            appFriendsCore.setValue(true, forKey: "staging")
-        }
-        else if (Environment.current == .testing)
-        {
-            appFriendsCore.setValue(true, forKey: "stressTest")
-        }
         
         UsersDataBase.sharedInstance.loadUsers()
         

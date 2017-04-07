@@ -55,31 +55,8 @@ class LoginViewController: BaseViewController {
         }
         
         // need to initialize Coredata for AppFriendsUI first
-        var key = ""
-        var secret = ""
-        
-        if Environment.current == .sandbox
-        {
-            key = "c3ZsINZMGHdGmbY3S6pcVgtt"
-            secret = "FhsajDeh6XXBF143m82sKwtt"
-        }
-        else if (Environment.current == .testing)
-        {
-            key = "A5de6lwrkIsnRhraNVsSzgtt"
-            secret = "D8EFZB2xtGSYd2vDBzWPyQtt"
-        }
-        else if (Environment.current == .staging)
-        {
-            key = "t3i23J6cnFUjtZaupVTGowtt"
-            secret = "FIVeZO8ocQD5XJZ1HAyhYgtt"
-        }
-        else {
-//            key = "QVdG4xshxzgb7EWouxMfowtt"
-//            secret = "Ii5vfrjl98ln7gUhR1hWQgtt"
-            key = "t3i23J6cnFUjtZaupVTGowtt"
-            secret = "FIVeZO8ocQD5XJZ1HAyhYgtt"
-        }
-        
+        let key = "t3i23J6cnFUjtZaupVTGowtt"
+        let secret = "FIVeZO8ocQD5XJZ1HAyhYgtt"
         AppFriendsUI.sharedInstance.initialize(key, secret: secret) { (success, error) in
             
             if success {
@@ -246,12 +223,6 @@ class LoginViewController: BaseViewController {
             }
             if self.currentUserInfo[HCSDKConstants.kUserName] == nil {
                 self.currentUserInfo[HCSDKConstants.kUserName] = self.userNameTextField.text
-            }
-            
-            if (Environment.current == .testing)
-            {
-                self.currentUserInfo[HCSDKConstants.kUserID] = "test"
-                self.currentUserInfo[HCSDKConstants.kUserName] = "test"
             }
 
             if let username = self.currentUserInfo[HCSDKConstants.kUserName],
