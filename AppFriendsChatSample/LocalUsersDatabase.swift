@@ -11,23 +11,22 @@ import AppFriendsCore
 
 import AppFriendsUI
 
-class UsersDataBase
-{
+class UsersDataBase {
     var userInfos: [[String: AnyObject]] = [[String: AnyObject]]()
-    
+
     static let sharedInstance = UsersDataBase()
-    
+
     func loadUsers() {
-        
+
         // load seed users from a json
         if let url = Bundle.main.url(forResource: "user_seeds", withExtension: "json") {
             if let data = try? Data(contentsOf: url) {
                 do {
                     let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     if let dictionary = object as? [String: AnyObject] {
-                        
+
                         if let users = dictionary["results"] as? [[String: AnyObject]] {
-                            
+
                             userInfos.append(contentsOf: users)
                         }
                     }
@@ -46,46 +45,50 @@ class UsersDataBase
             return false
         }
     }
-    
-    func findUserName(_ userID: String) -> String?{
-        
+
+    func findUserName(_ userID: String) -> String? {
+
         if userID == HCSDKCore.sharedInstance.currentUserID() {
-            
+
             let user = AFUser.currentUser()
             return user?.username
         }
-        
+
         for userInfo in userInfos {
-            let loginInfo = userInfo["login"] as! [String: String]
-            if let id = loginInfo["md5"] , id == userID
-            {
-                let nameInfo = userInfo["name"] as! [String: String]
+            guard let loginInfo = userInfo["login"] as? [String: String],
+            let nameInfo = userInfo["name"] as? [String: String] else {
+                continue
+            }
+            if let id = loginInfo["md5"], id == userID {
                 let userName = "\(nameInfo["first"]!) \(nameInfo["last"]!)"
-                
+
                 return userName
             }
         }
-        
+
         return nil
     }
-    
-    func findUserAvatar(_ userID: String) -> String?{
-        
+
+    func findUserAvatar(_ userID: String) -> String? {
+
         if userID == HCSDKCore.sharedInstance.currentUserID() {
-            
+
             let user = AFUser.currentUser()
             return user?.username
         }
-        
+
         for userInfo in userInfos {
-            let loginInfo = userInfo["login"] as! [String: String]
-            let pictureInfo = userInfo["picture"] as! [String: String]
-            if let avatar = pictureInfo["thumbnail"], let id = loginInfo["md5"] , id == userID
-            {
+            guard let loginInfo = userInfo["login"] as? [String: String],
+                let pictureInfo = userInfo["picture"] as? [String: String] else {
+                    continue
+            }
+            if let avatar = pictureInfo["thumbnail"],
+                let id = loginInfo["md5"],
+                id == userID {
                 return avatar
             }
         }
-        
+
         return nil
     }
 }

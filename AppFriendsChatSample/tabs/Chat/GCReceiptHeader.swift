@@ -8,9 +8,12 @@
 
 import UIKit
 
+/// Tableview header in the receipts list
 class GCReceiptHeader: UITableViewHeaderFooterView {
 
+    /// icon of the header
     @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var headerTitle: UILabel!
 
+    /// title of the header
+    @IBOutlet weak var headerTitle: UILabel!
 }

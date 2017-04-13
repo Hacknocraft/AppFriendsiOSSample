@@ -17,7 +17,7 @@ class GCDialogSettingViewController: HCDialogSettingViewController {
         self.navigationItem.leftBarButtonItem = leftBarButtonItem()
         self.navigationItem.rightBarButtonItem = rightBarButtonItem()
         self.view.backgroundColor = AppFriendsColor.coolGreyLighter
-        
+
         self._tableView?.tableHeaderView = nil
     }
 
@@ -25,12 +25,11 @@ class GCDialogSettingViewController: HCDialogSettingViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     // MARK: - Navigation bar
-    
+
     override func leftBarButtonItem() -> UIBarButtonItem {
-        
+
         // close
         let icon = UIImage(named: "ic_clear")
         let closeItem = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(closeView))
@@ -58,24 +57,23 @@ class GCDialogSettingViewController: HCDialogSettingViewController {
         let albumVC = HCAlbumViewController(dialogID: dialog.id)
         self.navigationController?.pushViewController(albumVC, animated: true)
     }
-    
+
     // MARK: - Override AppFriends Class
-    
+
     override func closeView() {
-        
+
         if let count = self.navigationController?.viewControllers.count, count > 1 {
             _ = self.navigationController?.popViewController(animated: true)
-        }
-        else {
+        } else {
             self.dismissVC(completion: nil)
         }
     }
-    
+
     override func didLeaveDialog() {
-        
+
         super.didLeaveDialog()
     }
-    
+
     override func membersRowTapped() {
 
         let dialog = currentDialog()

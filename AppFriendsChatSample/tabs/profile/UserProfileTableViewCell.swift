@@ -12,15 +12,15 @@ class UserProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userAvatarView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         self.userAvatarView.clipsToBounds = true
         self.userAvatarView.layer.borderColor = UIColor.white.cgColor
         self.userAvatarView.layer.borderWidth = 1
         self.userAvatarView.layer.cornerRadius = self.userAvatarView.frame.size.width/2
-        
+
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
     }
@@ -30,5 +30,5 @@ class UserProfileTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

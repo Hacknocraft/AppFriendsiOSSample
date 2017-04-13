@@ -10,7 +10,7 @@ import Foundation
 import EZSwiftExtensions
 
 struct AppFriendsColor {
-    
+
     static let ceruLean = UIColor(hexString: "0080d6")
     static let coolGreyDark = UIColor(hexString: "667c8c")
     static let coolGreyLighter = UIColor(hexString: "f5f8fa")

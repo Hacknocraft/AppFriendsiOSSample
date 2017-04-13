@@ -10,49 +10,47 @@ import UIKit
 import AppFriendsCore
 import AppFriendsUI
 
+/// Override the AppFriends provided chat view to change and extend chat functions
 class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate {
-    
+
     private lazy var __once: () = {[weak self] in
                 self?.textInputbar.textView.becomeFirstResponder()
             }()
-    
+
     var showKeyboardWhenDisplayed = false
-    
+
     deinit {
         print("")
     }
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let dialog = self.currentDialog(), let title = dialog.title, dialog.type == .group && title.isBlank
-        {
+
+        if let dialog = self.currentDialog(), let title = dialog.title, dialog.type == .group && title.isBlank {
             // show update dialog title banner
-            
+
             let dialogNameBanner = GCInfoBannerView(frame: CGRect.zero)
             dialogNameBanner.delegate = self
             let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime)
-            {[weak self] in
+            DispatchQueue.main.asyncAfter(deadline: delayTime) {[weak self] in
                 _ = dialogNameBanner.show(inController: self)
             }
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        
+
         super.viewDidAppear(animated)
-        
+
         if showKeyboardWhenDisplayed {
-            
+
             // show keyboard
             _ = self.__once
         }
     }
-    
+
     // MARK: - navigation bar
-    
+
     override func rightBarButtonItem() -> UIBarButtonItem? {
 
         if let dialog = self.currentDialog() {
@@ -60,11 +58,12 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
             if dialog.type != .channel {
 
                 // setting button
-                let moreItem = UIBarButtonItem(image: UIImage(named: "tabbarInfo"), style: .plain, target: self, action: #selector(GCChatViewController.settingButtonTapped))
+                let moreItem = UIBarButtonItem(image: UIImage(named: "tabbarInfo"),
+                                               style: .plain, target: self,
+                                               action: #selector(GCChatViewController.settingButtonTapped))
 
                 return moreItem
-            }
-            else {
+            } else {
                 return nil
             }
         }
@@ -72,25 +71,23 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
     }
 
     override func leftBarButtonItem() -> UIBarButtonItem? {
-        
+
         if UIDevice.current.userInterfaceIdiom == .pad, let parent = self.parent,
             parent is UISplitViewController {
-            
+
             return nil
         } else {
-            
+
             return super.leftBarButtonItem()
         }
     }
-    
-    override func settingButtonTapped()
-    {
+
+    override func settingButtonTapped() {
         if let dialog = self.currentDialog() {
             let dialogSetting = GCDialogSettingViewController(dialog: dialog)
             let nav = UINavigationController(rootViewController: dialogSetting)
 
-            if UIDevice.current.userInterfaceIdiom == .pad
-            {
+            if UIDevice.current.userInterfaceIdiom == .pad {
                 nav.modalPresentationStyle = .formSheet
                 nav.preferredContentSize = CGSize(width: 600, height: 520)
             }
@@ -98,13 +95,13 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
             self.presentVC(nav)
         }
     }
-    
+
     // MARK: - Handle Message Receipt
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         // only display receipt if it's a message sent by the current user
-        
+
         if tableView.isEqual(self.tableView) {
 
             if let message = self.message(atIndexPath: indexPath), let isSystem = message.isSystem,
@@ -113,14 +110,13 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
                 let receiptVC = GCMessageReceiptViewController(message: message)
                 self.navigationController?.pushViewController(receiptVC, animated: true)
             }
-        }
-        else {
+        } else {
             super.tableView(tableView, didSelectRowAt: indexPath)
         }
     }
-    
+
     // MARK: - GCInfoBannerViewDelegate
-    
+
     func groupTitleChanged(_ bannerView: GCInfoBannerView, text: String) {
 
         if let dialog = self.currentDialog() {
@@ -128,21 +124,20 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
             dialog.updateDialogName(dialogName: text, completion: { [weak self] (error) in
                 if let err = error {
                     self?.showErrorWithMessage(err.localizedDescription)
-                }
-                else {
+                } else {
                     self?.updateTitle()
                     bannerView.hideAnimated()
                 }
             })
         }
     }
-    
+
     // MARK: - HCChatTableViewCellDelegate
-    
+
     override func avatarTapped(inCell cell: HCChatTableViewCell) {
-        
+
         super.avatarTapped(inCell: cell)
-        
+
         if let indexPath = self.tableView.indexPath(for: cell) {
             let message = self.message(atIndexPath: indexPath)
             if let senderID = message?.senderID {
@@ -151,9 +146,9 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
             }
         }
     }
-    
+
     override func linkTapped(inCell cell: HCChatTableViewCell, url: URL) {
-        
+
         // respond to link click
         super.linkTapped(inCell: cell, url: url)
 
@@ -173,7 +168,7 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
             }
         }
     }
-    
+
     // MARK: - override chat UI
 
     override func fillAvatar(atIndexPath indexPath: IndexPath, avatarImageView: UIImageView?) {
@@ -190,9 +185,10 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
                 let index = senderName.index(senderName.startIndex, offsetBy: 2)
                 initialLabel.text = senderName.uppercased().substring(to: index)
 
-            }
-            else {
-                let initialLabel = UILabel(frame: CGRect(x: 0, y: 0, width: userAvatarImageView.w, height: userAvatarImageView.h))
+            } else {
+                let initialLabel = UILabel(frame: CGRect(x: 0, y: 0,
+                                                         width: userAvatarImageView.w,
+                                                         height: userAvatarImageView.h))
                 initialLabel.tag = 999 // a tag
                 initialLabel.textAlignment = .center
                 // replace this to get user initial

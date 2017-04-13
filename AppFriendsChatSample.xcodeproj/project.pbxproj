@@ -8,102 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		7F82AB006A6EBB6147DEF213 /* Pods_AppFriendsChatSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD0209DD7ABD96CEF1152CD /* Pods_AppFriendsChatSample.framework */; };
-		AF19C9A71DED1EBB00180A57 /* GCChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C97E1DED1EBB00180A57 /* GCChatViewController.swift */; };
-		AF19C9A81DED1EBB00180A57 /* GCContactSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C97F1DED1EBB00180A57 /* GCContactSelectionTableViewCell.xib */; };
-		AF19C9A91DED1EBB00180A57 /* GCContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9801DED1EBB00180A57 /* GCContactTableViewCell.swift */; };
-		AF19C9AA1DED1EBB00180A57 /* GCContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9811DED1EBB00180A57 /* GCContactTableViewCell.xib */; };
-		AF19C9AB1DED1EBB00180A57 /* GCDialogContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9821DED1EBB00180A57 /* GCDialogContactsPickerViewController.swift */; };
-		AF19C9AC1DED1EBB00180A57 /* GCDialogContactsPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9831DED1EBB00180A57 /* GCDialogContactsPickerViewController.xib */; };
-		AF19C9AD1DED1EBB00180A57 /* GCDialogMembersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9841DED1EBB00180A57 /* GCDialogMembersListViewController.swift */; };
-		AF19C9AE1DED1EBB00180A57 /* GCDialogMembersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9851DED1EBB00180A57 /* GCDialogMembersListViewController.xib */; };
-		AF19C9AF1DED1EBB00180A57 /* GCDialogSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9861DED1EBB00180A57 /* GCDialogSettingViewController.swift */; };
-		AF19C9B01DED1EBB00180A57 /* GCDialogsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9871DED1EBB00180A57 /* GCDialogsListViewController.swift */; };
-		AF19C9B11DED1EBB00180A57 /* GCInfoBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9881DED1EBB00180A57 /* GCInfoBannerView.swift */; };
-		AF19C9B21DED1EBB00180A57 /* GCMessageReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9891DED1EBB00180A57 /* GCMessageReceiptViewController.swift */; };
-		AF19C9B31DED1EBB00180A57 /* GCMessageReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C98A1DED1EBB00180A57 /* GCMessageReceiptViewController.xib */; };
-		AF19C9B41DED1EBB00180A57 /* GCReceipientBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C98B1DED1EBB00180A57 /* GCReceipientBar.swift */; };
-		AF19C9B51DED1EBB00180A57 /* GCReceiptHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C98C1DED1EBB00180A57 /* GCReceiptHeader.swift */; };
-		AF19C9B61DED1EBB00180A57 /* GCReceiptHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C98D1DED1EBB00180A57 /* GCReceiptHeader.xib */; };
-		AF19C9B71DED1EBB00180A57 /* GCReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C98E1DED1EBB00180A57 /* GCReceiptTableViewCell.swift */; };
-		AF19C9B81DED1EBB00180A57 /* GCReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C98F1DED1EBB00180A57 /* GCReceiptTableViewCell.xib */; };
 		AF19C9B91DED1EBB00180A57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9901DED1EBB00180A57 /* Colors.swift */; };
 		AF19C9BF1DED1EBB00180A57 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9961DED1EBB00180A57 /* Info.plist */; };
-		AF19C9CA1DED1EBB00180A57 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9A11DED1EBB00180A57 /* UserProfileTableViewCell.swift */; };
-		AF19C9CB1DED1EBB00180A57 /* UserProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9A21DED1EBB00180A57 /* UserProfileTableViewCell.xib */; };
-		AF19C9CC1DED1EBB00180A57 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9A31DED1EBB00180A57 /* UserSearchViewController.swift */; };
 		AF19C9CF1DED1FA000180A57 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9CE1DED1FA000180A57 /* BaseViewController.swift */; };
-		AF19CA071DED217000180A57 /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9F81DED217000180A57 /* AttendanceCell.swift */; };
-		AF19CA081DED217000180A57 /* AttendanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9F91DED217000180A57 /* AttendanceCell.xib */; };
-		AF19CA091DED217000180A57 /* CancelActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9FA1DED217000180A57 /* CancelActionButtonCell.swift */; };
-		AF19CA0A1DED217000180A57 /* CancelActionButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9FB1DED217000180A57 /* CancelActionButtonCell.xib */; };
-		AF19CA0B1DED217000180A57 /* ConfirmRejectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9FC1DED217000180A57 /* ConfirmRejectTableViewCell.swift */; };
-		AF19CA0C1DED217000180A57 /* ConfirmRejectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9FD1DED217000180A57 /* ConfirmRejectTableViewCell.xib */; };
-		AF19CA0D1DED217000180A57 /* GameAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9FE1DED217000180A57 /* GameAttendanceViewController.swift */; };
-		AF19CA0E1DED217000180A57 /* GamesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9FF1DED217000180A57 /* GamesListViewController.swift */; };
-		AF19CA0F1DED217000180A57 /* GameStarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA001DED217000180A57 /* GameStarterViewController.swift */; };
-		AF19CA101DED217000180A57 /* InviteUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA011DED217000180A57 /* InviteUserViewController.swift */; };
-		AF19CA111DED217000180A57 /* LiveGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA021DED217000180A57 /* LiveGameViewController.swift */; };
-		AF19CA121DED217000180A57 /* PlayerSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA031DED217000180A57 /* PlayerSectionHeaderView.swift */; };
-		AF19CA131DED217000180A57 /* PlayerSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF19CA041DED217000180A57 /* PlayerSectionHeaderView.xib */; };
-		AF19CA141DED217000180A57 /* ScheduleGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF19CA051DED217000180A57 /* ScheduleGame.storyboard */; };
-		AF19CA151DED217000180A57 /* ScheduleGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA061DED217000180A57 /* ScheduleGameViewController.swift */; };
 		AF19CA171DED21A500180A57 /* LocalUsersDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA161DED21A500180A57 /* LocalUsersDatabase.swift */; };
-		AF19CA191DED21C200180A57 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA181DED21C200180A57 /* ProfileViewController.swift */; };
 		AF19CA1B1DED223600180A57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF19CA1A1DED223600180A57 /* GoogleService-Info.plist */; };
 		AF19CA1E1DED239200180A57 /* Mainipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF19CA1C1DED239200180A57 /* Mainipad.storyboard */; };
 		AF19CA201DED23FC00180A57 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA1F1DED23FC00180A57 /* LoginViewController.swift */; };
 		AF19CA221DED245F00180A57 /* SeedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA211DED245F00180A57 /* SeedUsersViewController.swift */; };
 		AF19CA241DED24CD00180A57 /* user_seeds.json in Resources */ = {isa = PBXBuildFile; fileRef = AF19CA231DED24CD00180A57 /* user_seeds.json */; };
 		AF1A71141DCECCE100778CA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A71131DCECCE100778CA8 /* AppDelegate.swift */; };
-		AF1A71161DCECCE100778CA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A71151DCECCE100778CA8 /* ViewController.swift */; };
 		AF1A71191DCECCE100778CA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A71171DCECCE100778CA8 /* Main.storyboard */; };
 		AF1A711B1DCECCE100778CA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1A711A1DCECCE100778CA8 /* Assets.xcassets */; };
 		AF1A711E1DCECCE100778CA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A711C1DCECCE100778CA8 /* LaunchScreen.storyboard */; };
+		AF8034811EA03DA400803599 /* GCChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034671EA03DA400803599 /* GCChatViewController.swift */; };
+		AF8034821EA03DA400803599 /* GCContactSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8034681EA03DA400803599 /* GCContactSelectionTableViewCell.xib */; };
+		AF8034831EA03DA400803599 /* GCContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034691EA03DA400803599 /* GCContactTableViewCell.swift */; };
+		AF8034841EA03DA400803599 /* GCContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF80346A1EA03DA400803599 /* GCContactTableViewCell.xib */; };
+		AF8034851EA03DA400803599 /* GCDialogContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80346B1EA03DA400803599 /* GCDialogContactsPickerViewController.swift */; };
+		AF8034861EA03DA400803599 /* GCDialogContactsPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF80346C1EA03DA400803599 /* GCDialogContactsPickerViewController.xib */; };
+		AF8034871EA03DA400803599 /* GCDialogMembersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80346D1EA03DA400803599 /* GCDialogMembersListViewController.swift */; };
+		AF8034881EA03DA400803599 /* GCDialogMembersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF80346E1EA03DA400803599 /* GCDialogMembersListViewController.xib */; };
+		AF8034891EA03DA400803599 /* GCDialogSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80346F1EA03DA400803599 /* GCDialogSettingViewController.swift */; };
+		AF80348A1EA03DA400803599 /* GCDialogsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034701EA03DA400803599 /* GCDialogsListViewController.swift */; };
+		AF80348B1EA03DA400803599 /* GCInfoBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034711EA03DA400803599 /* GCInfoBannerView.swift */; };
+		AF80348C1EA03DA400803599 /* GCMessageReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034721EA03DA400803599 /* GCMessageReceiptViewController.swift */; };
+		AF80348D1EA03DA400803599 /* GCMessageReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8034731EA03DA400803599 /* GCMessageReceiptViewController.xib */; };
+		AF80348E1EA03DA400803599 /* GCReceipientBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034741EA03DA400803599 /* GCReceipientBar.swift */; };
+		AF80348F1EA03DA400803599 /* GCReceiptHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034751EA03DA400803599 /* GCReceiptHeader.swift */; };
+		AF8034901EA03DA400803599 /* GCReceiptHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8034761EA03DA400803599 /* GCReceiptHeader.xib */; };
+		AF8034911EA03DA400803599 /* GCReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034771EA03DA400803599 /* GCReceiptTableViewCell.swift */; };
+		AF8034921EA03DA400803599 /* GCReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8034781EA03DA400803599 /* GCReceiptTableViewCell.xib */; };
+		AF8034931EA03DA400803599 /* LiveGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80347A1EA03DA400803599 /* LiveGameViewController.swift */; };
+		AF8034941EA03DA400803599 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80347C1EA03DA400803599 /* ProfileViewController.swift */; };
+		AF8034951EA03DA400803599 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80347D1EA03DA400803599 /* UserProfileTableViewCell.swift */; };
+		AF8034961EA03DA400803599 /* UserProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF80347E1EA03DA400803599 /* UserProfileTableViewCell.xib */; };
+		AF8034971EA03DA400803599 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034801EA03DA400803599 /* UserSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5BD0209DD7ABD96CEF1152CD /* Pods_AppFriendsChatSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFriendsChatSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF19C97E1DED1EBB00180A57 /* GCChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCChatViewController.swift; sourceTree = "<group>"; };
-		AF19C97F1DED1EBB00180A57 /* GCContactSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCContactSelectionTableViewCell.xib; sourceTree = "<group>"; };
-		AF19C9801DED1EBB00180A57 /* GCContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCContactTableViewCell.swift; sourceTree = "<group>"; };
-		AF19C9811DED1EBB00180A57 /* GCContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCContactTableViewCell.xib; sourceTree = "<group>"; };
-		AF19C9821DED1EBB00180A57 /* GCDialogContactsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogContactsPickerViewController.swift; sourceTree = "<group>"; };
-		AF19C9831DED1EBB00180A57 /* GCDialogContactsPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCDialogContactsPickerViewController.xib; sourceTree = "<group>"; };
-		AF19C9841DED1EBB00180A57 /* GCDialogMembersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogMembersListViewController.swift; sourceTree = "<group>"; };
-		AF19C9851DED1EBB00180A57 /* GCDialogMembersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCDialogMembersListViewController.xib; sourceTree = "<group>"; };
-		AF19C9861DED1EBB00180A57 /* GCDialogSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogSettingViewController.swift; sourceTree = "<group>"; };
-		AF19C9871DED1EBB00180A57 /* GCDialogsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogsListViewController.swift; sourceTree = "<group>"; };
-		AF19C9881DED1EBB00180A57 /* GCInfoBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCInfoBannerView.swift; sourceTree = "<group>"; };
-		AF19C9891DED1EBB00180A57 /* GCMessageReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCMessageReceiptViewController.swift; sourceTree = "<group>"; };
-		AF19C98A1DED1EBB00180A57 /* GCMessageReceiptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCMessageReceiptViewController.xib; sourceTree = "<group>"; };
-		AF19C98B1DED1EBB00180A57 /* GCReceipientBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCReceipientBar.swift; sourceTree = "<group>"; };
-		AF19C98C1DED1EBB00180A57 /* GCReceiptHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCReceiptHeader.swift; sourceTree = "<group>"; };
-		AF19C98D1DED1EBB00180A57 /* GCReceiptHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCReceiptHeader.xib; sourceTree = "<group>"; };
-		AF19C98E1DED1EBB00180A57 /* GCReceiptTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCReceiptTableViewCell.swift; sourceTree = "<group>"; };
-		AF19C98F1DED1EBB00180A57 /* GCReceiptTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCReceiptTableViewCell.xib; sourceTree = "<group>"; };
 		AF19C9901DED1EBB00180A57 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AF19C9961DED1EBB00180A57 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AF19C9A11DED1EBB00180A57 /* UserProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewCell.swift; sourceTree = "<group>"; };
-		AF19C9A21DED1EBB00180A57 /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
-		AF19C9A31DED1EBB00180A57 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		AF19C9CE1DED1FA000180A57 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		AF19C9F81DED217000180A57 /* AttendanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
-		AF19C9F91DED217000180A57 /* AttendanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceCell.xib; sourceTree = "<group>"; };
-		AF19C9FA1DED217000180A57 /* CancelActionButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelActionButtonCell.swift; sourceTree = "<group>"; };
-		AF19C9FB1DED217000180A57 /* CancelActionButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelActionButtonCell.xib; sourceTree = "<group>"; };
-		AF19C9FC1DED217000180A57 /* ConfirmRejectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmRejectTableViewCell.swift; sourceTree = "<group>"; };
-		AF19C9FD1DED217000180A57 /* ConfirmRejectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmRejectTableViewCell.xib; sourceTree = "<group>"; };
-		AF19C9FE1DED217000180A57 /* GameAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAttendanceViewController.swift; sourceTree = "<group>"; };
-		AF19C9FF1DED217000180A57 /* GamesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesListViewController.swift; sourceTree = "<group>"; };
-		AF19CA001DED217000180A57 /* GameStarterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStarterViewController.swift; sourceTree = "<group>"; };
-		AF19CA011DED217000180A57 /* InviteUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteUserViewController.swift; sourceTree = "<group>"; };
-		AF19CA021DED217000180A57 /* LiveGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveGameViewController.swift; sourceTree = "<group>"; };
-		AF19CA031DED217000180A57 /* PlayerSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSectionHeaderView.swift; sourceTree = "<group>"; };
-		AF19CA041DED217000180A57 /* PlayerSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerSectionHeaderView.xib; sourceTree = "<group>"; };
-		AF19CA051DED217000180A57 /* ScheduleGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScheduleGame.storyboard; sourceTree = "<group>"; };
-		AF19CA061DED217000180A57 /* ScheduleGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleGameViewController.swift; sourceTree = "<group>"; };
 		AF19CA161DED21A500180A57 /* LocalUsersDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUsersDatabase.swift; sourceTree = "<group>"; };
-		AF19CA181DED21C200180A57 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AF19CA1A1DED223600180A57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF19CA1D1DED239200180A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Mainipad.storyboard; sourceTree = "<group>"; };
 		AF19CA1F1DED23FC00180A57 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -111,11 +59,33 @@
 		AF19CA231DED24CD00180A57 /* user_seeds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user_seeds.json; path = AppFriendsChatSample/user_seeds.json; sourceTree = "<group>"; };
 		AF1A71101DCECCE100778CA8 /* AppFriendsChatSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFriendsChatSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1A71131DCECCE100778CA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF1A71151DCECCE100778CA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF1A71181DCECCE100778CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF1A711A1DCECCE100778CA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF1A711D1DCECCE100778CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF1A711F1DCECCE100778CA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF8034671EA03DA400803599 /* GCChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCChatViewController.swift; sourceTree = "<group>"; };
+		AF8034681EA03DA400803599 /* GCContactSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCContactSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		AF8034691EA03DA400803599 /* GCContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCContactTableViewCell.swift; sourceTree = "<group>"; };
+		AF80346A1EA03DA400803599 /* GCContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCContactTableViewCell.xib; sourceTree = "<group>"; };
+		AF80346B1EA03DA400803599 /* GCDialogContactsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogContactsPickerViewController.swift; sourceTree = "<group>"; };
+		AF80346C1EA03DA400803599 /* GCDialogContactsPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCDialogContactsPickerViewController.xib; sourceTree = "<group>"; };
+		AF80346D1EA03DA400803599 /* GCDialogMembersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogMembersListViewController.swift; sourceTree = "<group>"; };
+		AF80346E1EA03DA400803599 /* GCDialogMembersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCDialogMembersListViewController.xib; sourceTree = "<group>"; };
+		AF80346F1EA03DA400803599 /* GCDialogSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogSettingViewController.swift; sourceTree = "<group>"; };
+		AF8034701EA03DA400803599 /* GCDialogsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDialogsListViewController.swift; sourceTree = "<group>"; };
+		AF8034711EA03DA400803599 /* GCInfoBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCInfoBannerView.swift; sourceTree = "<group>"; };
+		AF8034721EA03DA400803599 /* GCMessageReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCMessageReceiptViewController.swift; sourceTree = "<group>"; };
+		AF8034731EA03DA400803599 /* GCMessageReceiptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCMessageReceiptViewController.xib; sourceTree = "<group>"; };
+		AF8034741EA03DA400803599 /* GCReceipientBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCReceipientBar.swift; sourceTree = "<group>"; };
+		AF8034751EA03DA400803599 /* GCReceiptHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCReceiptHeader.swift; sourceTree = "<group>"; };
+		AF8034761EA03DA400803599 /* GCReceiptHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCReceiptHeader.xib; sourceTree = "<group>"; };
+		AF8034771EA03DA400803599 /* GCReceiptTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCReceiptTableViewCell.swift; sourceTree = "<group>"; };
+		AF8034781EA03DA400803599 /* GCReceiptTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCReceiptTableViewCell.xib; sourceTree = "<group>"; };
+		AF80347A1EA03DA400803599 /* LiveGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveGameViewController.swift; sourceTree = "<group>"; };
+		AF80347C1EA03DA400803599 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AF80347D1EA03DA400803599 /* UserProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewCell.swift; sourceTree = "<group>"; };
+		AF80347E1EA03DA400803599 /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
+		AF8034801EA03DA400803599 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		D0725C389F2B8027811B7B52 /* Pods-AppFriendsChatSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsChatSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsChatSample/Pods-AppFriendsChatSample.debug.xcconfig"; sourceTree = "<group>"; };
 		DE547ECE015FF9FA79484F7E /* Pods-AppFriendsChatSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsChatSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsChatSample/Pods-AppFriendsChatSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,53 +111,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		AF19C97D1DED1EBB00180A57 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				AF19C97E1DED1EBB00180A57 /* GCChatViewController.swift */,
-				AF19C97F1DED1EBB00180A57 /* GCContactSelectionTableViewCell.xib */,
-				AF19C9801DED1EBB00180A57 /* GCContactTableViewCell.swift */,
-				AF19C9811DED1EBB00180A57 /* GCContactTableViewCell.xib */,
-				AF19C9821DED1EBB00180A57 /* GCDialogContactsPickerViewController.swift */,
-				AF19C9831DED1EBB00180A57 /* GCDialogContactsPickerViewController.xib */,
-				AF19C9841DED1EBB00180A57 /* GCDialogMembersListViewController.swift */,
-				AF19C9851DED1EBB00180A57 /* GCDialogMembersListViewController.xib */,
-				AF19C9861DED1EBB00180A57 /* GCDialogSettingViewController.swift */,
-				AF19C9871DED1EBB00180A57 /* GCDialogsListViewController.swift */,
-				AF19C9881DED1EBB00180A57 /* GCInfoBannerView.swift */,
-				AF19C9891DED1EBB00180A57 /* GCMessageReceiptViewController.swift */,
-				AF19C98A1DED1EBB00180A57 /* GCMessageReceiptViewController.xib */,
-				AF19C98B1DED1EBB00180A57 /* GCReceipientBar.swift */,
-				AF19C98C1DED1EBB00180A57 /* GCReceiptHeader.swift */,
-				AF19C98D1DED1EBB00180A57 /* GCReceiptHeader.xib */,
-				AF19C98E1DED1EBB00180A57 /* GCReceiptTableViewCell.swift */,
-				AF19C98F1DED1EBB00180A57 /* GCReceiptTableViewCell.xib */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		AF19C9F71DED217000180A57 /* CustomDialogDemo */ = {
-			isa = PBXGroup;
-			children = (
-				AF19C9F81DED217000180A57 /* AttendanceCell.swift */,
-				AF19C9F91DED217000180A57 /* AttendanceCell.xib */,
-				AF19C9FA1DED217000180A57 /* CancelActionButtonCell.swift */,
-				AF19C9FB1DED217000180A57 /* CancelActionButtonCell.xib */,
-				AF19C9FC1DED217000180A57 /* ConfirmRejectTableViewCell.swift */,
-				AF19C9FD1DED217000180A57 /* ConfirmRejectTableViewCell.xib */,
-				AF19C9FE1DED217000180A57 /* GameAttendanceViewController.swift */,
-				AF19C9FF1DED217000180A57 /* GamesListViewController.swift */,
-				AF19CA001DED217000180A57 /* GameStarterViewController.swift */,
-				AF19CA011DED217000180A57 /* InviteUserViewController.swift */,
-				AF19CA021DED217000180A57 /* LiveGameViewController.swift */,
-				AF19CA031DED217000180A57 /* PlayerSectionHeaderView.swift */,
-				AF19CA041DED217000180A57 /* PlayerSectionHeaderView.xib */,
-				AF19CA051DED217000180A57 /* ScheduleGame.storyboard */,
-				AF19CA061DED217000180A57 /* ScheduleGameViewController.swift */,
-			);
-			path = CustomDialogDemo;
-			sourceTree = "<group>";
-		};
 		AF1A71071DCECCE100778CA8 = {
 			isa = PBXGroup;
 			children = (
@@ -210,28 +133,92 @@
 		AF1A71121DCECCE100778CA8 /* AppFriendsChatSample */ = {
 			isa = PBXGroup;
 			children = (
-				AF19C9F71DED217000180A57 /* CustomDialogDemo */,
+				AF8034651EA03DA400803599 /* tabs */,
 				AF19C9CE1DED1FA000180A57 /* BaseViewController.swift */,
-				AF19C97D1DED1EBB00180A57 /* Chat */,
-				AF19C9901DED1EBB00180A57 /* Colors.swift */,
-				AF19C9961DED1EBB00180A57 /* Info.plist */,
-				AF19CA1A1DED223600180A57 /* GoogleService-Info.plist */,
 				AF19CA211DED245F00180A57 /* SeedUsersViewController.swift */,
 				AF19CA1F1DED23FC00180A57 /* LoginViewController.swift */,
+				AF19C9901DED1EBB00180A57 /* Colors.swift */,
 				AF19CA161DED21A500180A57 /* LocalUsersDatabase.swift */,
-				AF19CA181DED21C200180A57 /* ProfileViewController.swift */,
-				AF19C9A11DED1EBB00180A57 /* UserProfileTableViewCell.swift */,
-				AF19C9A21DED1EBB00180A57 /* UserProfileTableViewCell.xib */,
-				AF19C9A31DED1EBB00180A57 /* UserSearchViewController.swift */,
 				AF1A71131DCECCE100778CA8 /* AppDelegate.swift */,
-				AF1A71151DCECCE100778CA8 /* ViewController.swift */,
-				AF1A71171DCECCE100778CA8 /* Main.storyboard */,
-				AF19CA1C1DED239200180A57 /* Mainipad.storyboard */,
-				AF1A711A1DCECCE100778CA8 /* Assets.xcassets */,
-				AF1A711C1DCECCE100778CA8 /* LaunchScreen.storyboard */,
 				AF1A711F1DCECCE100778CA8 /* Info.plist */,
+				AF8034981EA03DCD00803599 /* resources */,
 			);
 			path = AppFriendsChatSample;
+			sourceTree = "<group>";
+		};
+		AF8034651EA03DA400803599 /* tabs */ = {
+			isa = PBXGroup;
+			children = (
+				AF8034661EA03DA400803599 /* Chat */,
+				AF8034791EA03DA400803599 /* game */,
+				AF80347B1EA03DA400803599 /* profile */,
+				AF80347F1EA03DA400803599 /* search */,
+			);
+			path = tabs;
+			sourceTree = "<group>";
+		};
+		AF8034661EA03DA400803599 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AF8034671EA03DA400803599 /* GCChatViewController.swift */,
+				AF8034681EA03DA400803599 /* GCContactSelectionTableViewCell.xib */,
+				AF8034691EA03DA400803599 /* GCContactTableViewCell.swift */,
+				AF80346A1EA03DA400803599 /* GCContactTableViewCell.xib */,
+				AF80346B1EA03DA400803599 /* GCDialogContactsPickerViewController.swift */,
+				AF80346C1EA03DA400803599 /* GCDialogContactsPickerViewController.xib */,
+				AF80346D1EA03DA400803599 /* GCDialogMembersListViewController.swift */,
+				AF80346E1EA03DA400803599 /* GCDialogMembersListViewController.xib */,
+				AF80346F1EA03DA400803599 /* GCDialogSettingViewController.swift */,
+				AF8034701EA03DA400803599 /* GCDialogsListViewController.swift */,
+				AF8034711EA03DA400803599 /* GCInfoBannerView.swift */,
+				AF8034721EA03DA400803599 /* GCMessageReceiptViewController.swift */,
+				AF8034731EA03DA400803599 /* GCMessageReceiptViewController.xib */,
+				AF8034741EA03DA400803599 /* GCReceipientBar.swift */,
+				AF8034751EA03DA400803599 /* GCReceiptHeader.swift */,
+				AF8034761EA03DA400803599 /* GCReceiptHeader.xib */,
+				AF8034771EA03DA400803599 /* GCReceiptTableViewCell.swift */,
+				AF8034781EA03DA400803599 /* GCReceiptTableViewCell.xib */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		AF8034791EA03DA400803599 /* game */ = {
+			isa = PBXGroup;
+			children = (
+				AF80347A1EA03DA400803599 /* LiveGameViewController.swift */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		AF80347B1EA03DA400803599 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				AF80347C1EA03DA400803599 /* ProfileViewController.swift */,
+				AF80347D1EA03DA400803599 /* UserProfileTableViewCell.swift */,
+				AF80347E1EA03DA400803599 /* UserProfileTableViewCell.xib */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		AF80347F1EA03DA400803599 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				AF8034801EA03DA400803599 /* UserSearchViewController.swift */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		AF8034981EA03DCD00803599 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF1A71171DCECCE100778CA8 /* Main.storyboard */,
+				AF19CA1C1DED239200180A57 /* Mainipad.storyboard */,
+				AF19C9961DED1EBB00180A57 /* Info.plist */,
+				AF19CA1A1DED223600180A57 /* GoogleService-Info.plist */,
+				AF1A711A1DCECCE100778CA8 /* Assets.xcassets */,
+				AF1A711C1DCECCE100778CA8 /* LaunchScreen.storyboard */,
+			);
+			name = resources;
 			sourceTree = "<group>";
 		};
 		C2C2753EB9C2D8E9CA991BCC /* Frameworks */ = {
@@ -307,25 +294,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF1A711E1DCECCE100778CA8 /* LaunchScreen.storyboard in Resources */,
-				AF19CA0A1DED217000180A57 /* CancelActionButtonCell.xib in Resources */,
-				AF19C9B61DED1EBB00180A57 /* GCReceiptHeader.xib in Resources */,
-				AF19CA141DED217000180A57 /* ScheduleGame.storyboard in Resources */,
+				AF8034861EA03DA400803599 /* GCDialogContactsPickerViewController.xib in Resources */,
 				AF19CA241DED24CD00180A57 /* user_seeds.json in Resources */,
+				AF8034841EA03DA400803599 /* GCContactTableViewCell.xib in Resources */,
 				AF1A711B1DCECCE100778CA8 /* Assets.xcassets in Resources */,
+				AF8034821EA03DA400803599 /* GCContactSelectionTableViewCell.xib in Resources */,
+				AF8034921EA03DA400803599 /* GCReceiptTableViewCell.xib in Resources */,
 				AF19CA1E1DED239200180A57 /* Mainipad.storyboard in Resources */,
-				AF19CA131DED217000180A57 /* PlayerSectionHeaderView.xib in Resources */,
-				AF19C9B81DED1EBB00180A57 /* GCReceiptTableViewCell.xib in Resources */,
-				AF19C9AE1DED1EBB00180A57 /* GCDialogMembersListViewController.xib in Resources */,
+				AF8034901EA03DA400803599 /* GCReceiptHeader.xib in Resources */,
+				AF8034961EA03DA400803599 /* UserProfileTableViewCell.xib in Resources */,
 				AF19C9BF1DED1EBB00180A57 /* Info.plist in Resources */,
-				AF19C9A81DED1EBB00180A57 /* GCContactSelectionTableViewCell.xib in Resources */,
 				AF19CA1B1DED223600180A57 /* GoogleService-Info.plist in Resources */,
-				AF19C9AA1DED1EBB00180A57 /* GCContactTableViewCell.xib in Resources */,
-				AF19C9CB1DED1EBB00180A57 /* UserProfileTableViewCell.xib in Resources */,
-				AF19CA081DED217000180A57 /* AttendanceCell.xib in Resources */,
+				AF80348D1EA03DA400803599 /* GCMessageReceiptViewController.xib in Resources */,
 				AF1A71191DCECCE100778CA8 /* Main.storyboard in Resources */,
-				AF19CA0C1DED217000180A57 /* ConfirmRejectTableViewCell.xib in Resources */,
-				AF19C9AC1DED1EBB00180A57 /* GCDialogContactsPickerViewController.xib in Resources */,
-				AF19C9B31DED1EBB00180A57 /* GCMessageReceiptViewController.xib in Resources */,
+				AF8034881EA03DA400803599 /* GCDialogMembersListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,37 +366,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF19CA071DED217000180A57 /* AttendanceCell.swift in Sources */,
-				AF19CA091DED217000180A57 /* CancelActionButtonCell.swift in Sources */,
-				AF19C9CC1DED1EBB00180A57 /* UserSearchViewController.swift in Sources */,
-				AF19C9B11DED1EBB00180A57 /* GCInfoBannerView.swift in Sources */,
-				AF19CA111DED217000180A57 /* LiveGameViewController.swift in Sources */,
+				AF8034871EA03DA400803599 /* GCDialogMembersListViewController.swift in Sources */,
+				AF8034831EA03DA400803599 /* GCContactTableViewCell.swift in Sources */,
+				AF8034851EA03DA400803599 /* GCDialogContactsPickerViewController.swift in Sources */,
+				AF8034911EA03DA400803599 /* GCReceiptTableViewCell.swift in Sources */,
+				AF8034951EA03DA400803599 /* UserProfileTableViewCell.swift in Sources */,
+				AF8034811EA03DA400803599 /* GCChatViewController.swift in Sources */,
+				AF80348A1EA03DA400803599 /* GCDialogsListViewController.swift in Sources */,
 				AF19C9CF1DED1FA000180A57 /* BaseViewController.swift in Sources */,
-				AF19C9CA1DED1EBB00180A57 /* UserProfileTableViewCell.swift in Sources */,
-				AF19CA101DED217000180A57 /* InviteUserViewController.swift in Sources */,
-				AF19CA151DED217000180A57 /* ScheduleGameViewController.swift in Sources */,
-				AF19CA0E1DED217000180A57 /* GamesListViewController.swift in Sources */,
+				AF80348E1EA03DA400803599 /* GCReceipientBar.swift in Sources */,
 				AF19C9B91DED1EBB00180A57 /* Colors.swift in Sources */,
-				AF19C9B21DED1EBB00180A57 /* GCMessageReceiptViewController.swift in Sources */,
-				AF19C9B41DED1EBB00180A57 /* GCReceipientBar.swift in Sources */,
-				AF19CA191DED21C200180A57 /* ProfileViewController.swift in Sources */,
-				AF19C9AB1DED1EBB00180A57 /* GCDialogContactsPickerViewController.swift in Sources */,
-				AF19C9A91DED1EBB00180A57 /* GCContactTableViewCell.swift in Sources */,
-				AF1A71161DCECCE100778CA8 /* ViewController.swift in Sources */,
-				AF19C9B51DED1EBB00180A57 /* GCReceiptHeader.swift in Sources */,
+				AF8034941EA03DA400803599 /* ProfileViewController.swift in Sources */,
+				AF80348B1EA03DA400803599 /* GCInfoBannerView.swift in Sources */,
+				AF8034891EA03DA400803599 /* GCDialogSettingViewController.swift in Sources */,
+				AF80348C1EA03DA400803599 /* GCMessageReceiptViewController.swift in Sources */,
 				AF19CA201DED23FC00180A57 /* LoginViewController.swift in Sources */,
 				AF19CA171DED21A500180A57 /* LocalUsersDatabase.swift in Sources */,
-				AF19C9B71DED1EBB00180A57 /* GCReceiptTableViewCell.swift in Sources */,
+				AF8034971EA03DA400803599 /* UserSearchViewController.swift in Sources */,
 				AF19CA221DED245F00180A57 /* SeedUsersViewController.swift in Sources */,
-				AF19C9A71DED1EBB00180A57 /* GCChatViewController.swift in Sources */,
-				AF19CA121DED217000180A57 /* PlayerSectionHeaderView.swift in Sources */,
-				AF19CA0F1DED217000180A57 /* GameStarterViewController.swift in Sources */,
-				AF19C9AF1DED1EBB00180A57 /* GCDialogSettingViewController.swift in Sources */,
 				AF1A71141DCECCE100778CA8 /* AppDelegate.swift in Sources */,
-				AF19C9B01DED1EBB00180A57 /* GCDialogsListViewController.swift in Sources */,
-				AF19CA0B1DED217000180A57 /* ConfirmRejectTableViewCell.swift in Sources */,
-				AF19CA0D1DED217000180A57 /* GameAttendanceViewController.swift in Sources */,
-				AF19C9AD1DED1EBB00180A57 /* GCDialogMembersListViewController.swift in Sources */,
+				AF8034931EA03DA400803599 /* LiveGameViewController.swift in Sources */,
+				AF80348F1EA03DA400803599 /* GCReceiptHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
