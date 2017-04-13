@@ -8,7 +8,6 @@ Engage users with our turnkey social layer
 <br />
 <br />
 <a href="https://www.bitrise.io/app/b64fc32389e5c132#/builds"><img alt="Build Status" src="https://www.bitrise.io/app/b64fc32389e5c132.svg?token=LK2n0BLiCini3bDGIGO_pg" /></a>
-
 <a href="https://cocoapods.org/pods/CoreStore"><img alt="Cocoapods compatible" src="https://img.shields.io/cocoapods/v/CoreStore.svg?style=flat&label=Cocoapods" /></a>
 </p>
 
