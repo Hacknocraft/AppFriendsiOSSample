@@ -19,8 +19,8 @@ Before start using AppFriends, you need to create an application on the [dashboa
 ### Using Cocoapods
 To integrate AppFriends iOS SDK to your Xcode iOS project, add this line in your `Podfile`
 ``` ruby
-pod 'AppFriendsUI', '~> 2.0.1'
-pod 'AppFriendsCore', '~> 2.0.1'
+pod 'AppFriendsUI', '~> 2.0.3'
+pod 'AppFriendsCore', '~> 2.0.2'
 ```
 Also, add `use_frameworks!` to the top of file. eg.
 ``` ruby

@@ -7,8 +7,8 @@ target 'AppFriendsChatSample' do
 
     use_frameworks!
     # Pods for AppFriendsChatSample
-    pod 'AppFriendsUI', '2.0.1'
-    pod 'AppFriendsCore', '2.0.1'
+    pod 'AppFriendsUI', '2.0.3'
+    pod 'AppFriendsCore', '2.0.2'
 
     # Optional pod if you want to use floating widget
     pod 'AppFriendsFloatingWidget', '~> 1.0.4'
