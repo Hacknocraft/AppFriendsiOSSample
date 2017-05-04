@@ -9,6 +9,8 @@ Engage users with our turnkey social layer
 <br />
 <a href="https://www.bitrise.io/app/b64fc32389e5c132#/builds"><img alt="Build Status" src="https://www.bitrise.io/app/b64fc32389e5c132.svg?token=LK2n0BLiCini3bDGIGO_pg" /></a>
 <a href="https://cocoapods.org/pods/CoreStore"><img alt="Cocoapods compatible" src="https://img.shields.io/cocoapods/v/CoreStore.svg?style=flat&label=Cocoapods" /></a>
+</a>
+<a href="https://github.com/Carthage/Carthage"><img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" /></a>
 </p>
 
 # Quick Start
@@ -19,7 +21,7 @@ Before start using AppFriends, you need to create an application on the [dashboa
 ### Using Cocoapods
 To integrate AppFriends iOS SDK to your Xcode iOS project, add this line in your `Podfile`
 ``` ruby
-pod 'AppFriendsUI', '~> 2.0.3'
+pod 'AppFriendsUI', '~> 2.0.4'
 pod 'AppFriendsCore', '~> 2.0.2'
 ```
 Also, add `use_frameworks!` to the top of file. eg.
