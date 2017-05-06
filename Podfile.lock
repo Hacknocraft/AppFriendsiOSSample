@@ -1,5 +1,4 @@
 PODS:
-  - AFDateHelper (3.5.3)
   - Alamofire (4.4.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
@@ -13,8 +12,7 @@ PODS:
     - AppFriendsCore (~> 2.0.1)
     - AppFriendsUI (~> 2.0.1)
     - RSKImageCropper (~> 1.6.1)
-  - AppFriendsUI (2.0.3):
-    - AFDateHelper (~> 3.5.3)
+  - AppFriendsUI (2.0.4):
     - AlamofireImage (~> 3.1)
     - AppFriendsCore (~> 2.0.2)
     - CLTokenInputView (~> 2.3.0)
@@ -63,7 +61,7 @@ PODS:
 DEPENDENCIES:
   - AppFriendsCore (= 2.0.2)
   - AppFriendsFloatingWidget (~> 1.0.4)
-  - AppFriendsUI (= 2.0.3)
+  - AppFriendsUI (= 2.0.4)
   - Crashlytics
   - EZSwiftExtensions (~> 1.8)
   - Fabric
@@ -71,12 +69,11 @@ DEPENDENCIES:
   - Firebase/Messaging
 
 SPEC CHECKSUMS:
-  AFDateHelper: e64bcc4a88a07e1d3e62442741b2a164adc02d77
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   AppFriendsCore: 657e83f17278d56703f65fc72d6e33dfb8589099
   AppFriendsFloatingWidget: 38613ec9438ab9cb1bddc3474fe015f21f21ccda
-  AppFriendsUI: b432b77e54b04b6f6858a9ea1776f8ca7a386db1
+  AppFriendsUI: 6c324b2f31ae67272a3066da65e9e27b78683f31
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
   CLTokenInputView: 9dc1ffb7c9d2d81787e69a63c75bd97b0b2d1e76
@@ -97,6 +94,6 @@ SPEC CHECKSUMS:
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   Socket.IO-Client-Swift: a2faffdbde89c63aebc5d631041530c1068b02b8
 
-PODFILE CHECKSUM: 3e434a1e950c4a67cb526414952213955dcfb070
+PODFILE CHECKSUM: 54251d14ad66e1f923028ab2c0be3a12aa8ef841
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1
