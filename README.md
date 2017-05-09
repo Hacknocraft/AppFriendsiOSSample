@@ -34,6 +34,17 @@ use_frameworks!
 
 You might need to run `pod repo update` after this step before calling `pod install`
 
+### Using Carthage
+To integrate using Carthage
+
+`github "Hacknocraft/AppFriendsCarthage" ~> 2.0.4`
+
+#### Add frameworks:
+![Frameworks](http://res.cloudinary.com/hacknocraft-appfriends/image/upload/v1493874920/Screen_Shot_2017-05-04_at_1.14.11_AM_kywady.png)
+
+#### Copy frameworks:
+![Copy Frameworks](http://res.cloudinary.com/hacknocraft-appfriends/image/upload/v1493874915/Screen_Shot_2017-05-04_at_1.13.57_AM_gsfifq.png)
+
 To see an sample app of how to use AppFriendsUI, please checkout our repo:
 
 <a href="https://github.com/Hacknocraft/AppFriendsiOSSample">
