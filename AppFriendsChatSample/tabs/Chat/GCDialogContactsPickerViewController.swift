@@ -9,7 +9,6 @@
 import UIKit
 import AppFriendsCore
 import AppFriendsUI
-import CLTokenInputView
 
 fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -38,7 +37,7 @@ public protocol GCDialogContactsPickerViewControllerDelegate {
 }
 
 class GCDialogContactsPickerViewController: BaseViewController,
-UITableViewDelegate, UITableViewDataSource, CLTokenInputViewDelegate {
+UITableViewDelegate, UITableViewDataSource, AFTokenInputViewDelegate {
 
     @IBOutlet weak var receipientBar: GCReceipientBar!
     @IBOutlet weak var tableView: UITableView!
@@ -342,7 +341,7 @@ UITableViewDelegate, UITableViewDataSource, CLTokenInputViewDelegate {
             userSelectedIDs.append(userID)
         }
 
-        let token = CLToken(displayText: userName, context: userID as NSObject?)
+        let token = AFToken(displayText: userName, context: userID as NSObject?)
         if receipientBar.allTokens.contains(token) {
             receipientBar.remove(token)
         } else {
@@ -360,13 +359,8 @@ UITableViewDelegate, UITableViewDataSource, CLTokenInputViewDelegate {
         return 25
     }
 
-    // MARK: CLTokenInputViewDelegate
-
-    func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
-
-    }
-
-    func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
+    // MARK: AFTokenInputViewDelegate
+    func tokenInputView(_ view: AFTokenInputView, didRemove token: AFToken) {
 
         if let userID = token.context as? String {
 
@@ -377,11 +371,11 @@ UITableViewDelegate, UITableViewDataSource, CLTokenInputViewDelegate {
         }
     }
 
-    func tokenInputView(_ view: CLTokenInputView, didChangeHeightTo height: CGFloat) {
+    func tokenInputView(_ view: AFTokenInputView, didChangeHeightTo height: CGFloat) {
         self.receipientBarHeightConstraint.constant = height
     }
 
-    func tokenInputView(_ view: CLTokenInputView, didChangeText text: String?) {
+    func tokenInputView(_ view: AFTokenInputView, didChangeText text: String?) {
 
         // filter users
         if let t = text, !t.isBlank {

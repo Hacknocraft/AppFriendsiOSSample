@@ -59,9 +59,6 @@ class ProfileViewController: UITableViewController {
         // create chat button
         layoutNavigationBarItem()
 
-        // observe new message
-        startObservingNewMessagesAndUpdateBadge()
-
         self._chatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
 
         if _userID == nil {
@@ -96,23 +93,7 @@ class ProfileViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    deinit {
-
-        let notificationName = AppFriendsUI.kTotalUnreadMessageCountChangedNotification
-        NotificationCenter.default.removeObserver(self,
-                                                  name: NSNotification.Name(rawValue: notificationName),
-                                                  object: nil)
-    }
-
     // MARK: - Observe Messages
-
-    func startObservingNewMessagesAndUpdateBadge() {
-        let notificationName = AppFriendsUI.kTotalUnreadMessageCountChangedNotification
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTabBarBadge),
-                                               name: NSNotification.Name(rawValue: notificationName),
-                                               object: nil)
-    }
 
     func updateTabBarBadge(_ notification: Notification?) {
         DispatchQueue.main.async(execute: {
@@ -161,33 +142,28 @@ class ProfileViewController: UITableViewController {
     func logout(_ sender: AnyObject) {
 
         AFPushNotification.unregisterDeviceForPushNotification { (error) in
-            if error == nil {
+            AFSession.logout { (error) in
+                if error != nil {
+                    self.showAlert("Log Out Error", message: error?.localizedDescription ?? "")
+                } else {
 
-                AFSession.logout { (error) in
-                    if error != nil {
-                        self.showAlert("Log Out Error", message: error?.localizedDescription ?? "")
-                    } else {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
 
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                    if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
 
-                        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+                        UIView.transition(with: window,
+                                          duration: 0.3,
+                                          options: .transitionFlipFromLeft,
+                                          animations: {
 
-                            UIView.transition(with: window,
-                                              duration: 0.3,
-                                              options: .transitionFlipFromLeft,
-                                              animations: {
+                                            window.rootViewController = loginVC
 
-                                window.rootViewController = loginVC
-
-                            }, completion: { (_) in
-                                NSLog("Registered device of push notification")
-                            })
-                        }
+                        }, completion: { (_) in
+                            NSLog("Registered device of push notification")
+                        })
                     }
                 }
-            } else {
-                self.showAlert("unregister device failed!", message: error?.localizedDescription ?? "")
             }
         }
     }

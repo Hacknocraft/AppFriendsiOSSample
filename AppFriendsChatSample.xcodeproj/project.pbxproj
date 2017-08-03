@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7F82AB006A6EBB6147DEF213 /* Pods_AppFriendsChatSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD0209DD7ABD96CEF1152CD /* Pods_AppFriendsChatSample.framework */; };
 		AF19C9B91DED1EBB00180A57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9901DED1EBB00180A57 /* Colors.swift */; };
-		AF19C9BF1DED1EBB00180A57 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF19C9961DED1EBB00180A57 /* Info.plist */; };
 		AF19C9CF1DED1FA000180A57 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19C9CE1DED1FA000180A57 /* BaseViewController.swift */; };
 		AF19CA171DED21A500180A57 /* LocalUsersDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF19CA161DED21A500180A57 /* LocalUsersDatabase.swift */; };
 		AF19CA1B1DED223600180A57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF19CA1A1DED223600180A57 /* GoogleService-Info.plist */; };
@@ -259,7 +258,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = hacknocraft;
 				TargetAttributes = {
 					AF1A710F1DCECCE100778CA8 = {
@@ -303,7 +302,6 @@
 				AF19CA1E1DED239200180A57 /* Mainipad.storyboard in Resources */,
 				AF8034901EA03DA400803599 /* GCReceiptHeader.xib in Resources */,
 				AF8034961EA03DA400803599 /* UserProfileTableViewCell.xib in Resources */,
-				AF19C9BF1DED1EBB00180A57 /* Info.plist in Resources */,
 				AF19CA1B1DED223600180A57 /* GoogleService-Info.plist in Resources */,
 				AF80348D1EA03DA400803599 /* GCMessageReceiptViewController.xib in Resources */,
 				AF1A71191DCECCE100778CA8 /* Main.storyboard in Resources */,

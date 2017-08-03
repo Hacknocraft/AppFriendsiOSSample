@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import CLTokenInputView
-
+import AppFriendsUI
 /// Receipt token to display the name in the search bar
-class GCReceipientBar: CLTokenInputView {
+class GCReceipientBar: AFTokenInputView {
 }

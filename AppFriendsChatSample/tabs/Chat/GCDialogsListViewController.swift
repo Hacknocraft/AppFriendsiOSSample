@@ -11,14 +11,11 @@ import AppFriendsCore
 import CoreStore
 import AppFriendsUI
 
-class GCDialogsListViewController: HCDialogsListViewController, GCDialogContactsPickerViewControllerDelegate {
+class GCDialogsListViewController: HCDialogsListViewController, GCDialogContactsPickerViewControllerDelegate, AFEventSubscriber {
 
     var showingDialog = false
 
     deinit {
-        NotificationCenter.default.removeObserver(self,
-                                                  name: NSNotification.Name(rawValue: AppFriendsUI.kTotalUnreadMessageCountChangedNotification),
-                                                  object: nil)
         NotificationCenter.default.removeObserver(self,
                                                   name: NSNotification.Name(rawValue: "CHAT_PUSH_TAPPED"),
                                                   object: nil)
@@ -26,8 +23,9 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
 
     override func awakeAfter(using aDecoder: NSCoder) -> Any? {
 
+        AFEvent.subscribe(subscriber: self)
+
         self.updateTabBarBadge(nil)
-        startObservingNewMessagesAndUpdateBadge()
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(GCDialogsListViewController.handlePush(notification:)),
@@ -202,13 +200,6 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
 
     // MARK: - Badges update for the tabbar
 
-    func startObservingNewMessagesAndUpdateBadge() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTabBarBadge),
-                                               name: NSNotification.Name(rawValue: AppFriendsUI.kTotalUnreadMessageCountChangedNotification),
-                                               object: nil)
-    }
-
     func updateTabBarBadge(_ notification: Notification?) {
         DispatchQueue.main.async(execute: {
 
@@ -235,6 +226,18 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
         if UIDevice.current.userInterfaceIdiom == .pad {
             // clear the detail view on the right side if you are using a split view on iPad
             self.navigationController?.splitViewController?.showDetailViewController(UIViewController(), sender: self)
+        }
+    }
+
+    // MARK: - AFEventSubscriber
+
+    func emitEvent(_ event: AFEvent) {
+
+        if event.name == .eventTotalUnreadCountChange {
+
+            DispatchQueue.main.async(execute: {
+                self.updateTabBarBadge(nil)
+            })
         }
     }
 }

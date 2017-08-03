@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vl-Ln-pi0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vl-Ln-pi0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -393,6 +393,16 @@
                                     <action selector="chatButtonTapped:" destination="RvY-Jz-LmA" eventType="touchUpInside" id="313-Ab-JIE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC1-z1-XtF">
+                                <rect key="frame" x="16" y="129" width="147" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="VQe-NU-BJI"/>
+                                    <constraint firstAttribute="width" constant="147" id="puJ-wN-mSO"/>
+                                </constraints>
+                                <state key="normal" title="Sponsored Chat">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -400,6 +410,8 @@
                             <constraint firstItem="t2u-QX-4gz" firstAttribute="trailing" secondItem="OSH-32-fFE" secondAttribute="trailingMargin" id="8Qa-iI-dKD"/>
                             <constraint firstItem="kpL-Dt-thQ" firstAttribute="leading" secondItem="OSH-32-fFE" secondAttribute="leading" id="9WX-37-Ath"/>
                             <constraint firstItem="t2u-QX-4gz" firstAttribute="top" secondItem="BRy-lt-kwj" secondAttribute="bottom" constant="63" id="CLq-LK-ZN2"/>
+                            <constraint firstItem="nC1-z1-XtF" firstAttribute="leading" secondItem="OSH-32-fFE" secondAttribute="leadingMargin" id="P8j-cU-DbQ"/>
+                            <constraint firstItem="nC1-z1-XtF" firstAttribute="top" secondItem="BRy-lt-kwj" secondAttribute="bottom" constant="65" id="avm-am-Lcp"/>
                             <constraint firstAttribute="trailing" secondItem="kpL-Dt-thQ" secondAttribute="trailing" id="fFx-6s-bIg"/>
                             <constraint firstItem="kpL-Dt-thQ" firstAttribute="top" secondItem="OSH-32-fFE" secondAttribute="top" id="oaW-p3-eZt"/>
                         </constraints>
@@ -411,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xca-Da-tuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-651" y="486"/>
+            <point key="canvasLocation" x="-652" y="485.30734632683664"/>
         </scene>
         <!--Search-->
         <scene sceneID="paO-lH-xiE">

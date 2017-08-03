@@ -7,8 +7,8 @@ target 'AppFriendsChatSample' do
 
     use_frameworks!
     # Pods for AppFriendsChatSample
-    pod 'AppFriendsUI', '2.0.4'
-    pod 'AppFriendsCore', '2.0.2'
+    pod 'AppFriendsUI', '2.1.2'
+    pod 'AppFriendsCore', '2.0.6'
 
     # Optional pod if you want to use floating widget
     pod 'AppFriendsFloatingWidget', '~> 1.0.4'
@@ -21,5 +21,8 @@ target 'AppFriendsChatSample' do
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'EZSwiftExtensions', '~> 1.8'
+
+    # other UI pods
+    pod 'CLTokenInputView'
 
 end

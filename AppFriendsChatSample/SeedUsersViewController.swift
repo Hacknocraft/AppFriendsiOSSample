@@ -161,7 +161,7 @@ class SeedUsersViewController: BaseViewController, UITableViewDelegate, UITableV
                             })
 
                             // register for push notification
-                            if let pushToken = FIRInstanceID.instanceID().token() {
+                            if let pushToken = InstanceID.instanceID().token() {
                                 HCSDKCore.sharedInstance.registerDeviceForPush(currentUserID, pushToken: pushToken)
                             }
                         } else {

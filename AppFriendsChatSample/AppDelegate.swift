@@ -50,16 +50,7 @@ AFEventSubscriber {
         let appFriendsCore = HCSDKCore.sharedInstance
         appFriendsCore.enableDebug()
 
-        if Environment.current == .sandbox {
-            appFriendsCore.setValue(true, forKey: "useSandbox")
-        } else if Environment.current == .staging {
-            appFriendsCore.setValue(true, forKey: "staging")
-        } else if Environment.current == .testing {
-            appFriendsCore.setValue(true, forKey: "stressTest")
-        }
-
         UsersDataBase.sharedInstance.loadUsers()
-
         Fabric.with([Crashlytics.self])
 
         // Handle notification
@@ -75,13 +66,7 @@ AFEventSubscriber {
 
         // push notification
         initializePushNotification(app: application)
-        FIRApp.configure()
-
-        let notificationName = AppFriendsUI.kTotalUnreadMessageCountChangedNotification
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTabBarBadge),
-                                               name: NSNotification.Name(rawValue: notificationName),
-                                               object: nil)
+        FirebaseApp.configure()
 
         // listen to AppFriends Event
         AFEvent.subscribe(subscriber: self)
@@ -105,16 +90,9 @@ AFEventSubscriber {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        FIRMessaging.messaging().disconnect()
         print("Disconnected from FCM.")
 
         UIApplication.shared.applicationIconBadgeNumber = AFDialog.totalUnreadMessageCount()
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        FIRMessaging.messaging().connect { error in
-            print(error ?? "")
-        }
     }
 
     // example of handling remote notification
@@ -177,6 +155,8 @@ AFEventSubscriber {
         HCColorPalette.chatInMessageBubbleColor = AppFriendsColor.coolGreyLighter!
         HCColorPalette.chatOutMessageContentTextColor = UIColor.white
         HCColorPalette.chatInMessageContentTextColor = AppFriendsColor.charcoalGrey!
+//        HCColorPalette.chatInMessageLinkColor = UIColor.green
+//        HCColorPalette.chatOutMessageLinkColor = UIColor.red
 
         HCColorPalette.chatUserNamelTextColor = AppFriendsColor.coolGray!
         HCColorPalette.avatarBackgroundColor = AppFriendsColor.coolGray!
@@ -186,7 +166,6 @@ AFEventSubscriber {
         HCColorPalette.normalTextColor = AppFriendsColor.charcoalGrey!
 
         HCColorPalette.navigationBarTitleColor = AppFriendsColor.charcoalGrey!
-
         //Album
 //        HCColorPalette.albumBackgroundColor = UIColor.white
 //        HCColorPalette.albumSectionBackgroundColor = UIColor(hexString: "d6d6d6")
@@ -205,15 +184,11 @@ AFEventSubscriber {
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        #if DEBUG
-            FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .sandbox)
-        #else
-            FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .prod)
-        #endif
+        Messaging.messaging().apnsToken = deviceToken
 
         // register for push notification
         if AFSession.isLoggedIn(),
-            let pushToken = FIRInstanceID.instanceID().token(),
+            let pushToken = InstanceID.instanceID().token(),
             let currentUserID = HCSDKCore.sharedInstance.currentUserID() {
             HCSDKCore.sharedInstance.registerDeviceForPush(currentUserID, pushToken: pushToken)
         }
@@ -228,7 +203,7 @@ AFEventSubscriber {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(tokenRefreshNotification),
-                                               name: NSNotification.Name.firInstanceIDTokenRefresh,
+                                               name: NSNotification.Name.InstanceIDTokenRefresh,
                                                object: nil)
 
         let settings: UIUserNotificationSettings =
@@ -238,28 +213,15 @@ AFEventSubscriber {
     }
 
     func tokenRefreshNotification(_ notification: Notification) {
-        if let refreshedToken = FIRInstanceID.instanceID().token() {
+        if let refreshedToken = InstanceID.instanceID().token() {
             print("GCM InstanceID token: \(refreshedToken)")
         }
 
-        // Connect to FCM since connection may have failed when attempted before having a token.
-        connectToFcm()
-
         // register for push notification
         if AFSession.isLoggedIn(),
-            let pushToken = FIRInstanceID.instanceID().token(),
+            let pushToken = InstanceID.instanceID().token(),
             let currentUserID = HCSDKCore.sharedInstance.currentUserID() {
             HCSDKCore.sharedInstance.registerDeviceForPush(currentUserID, pushToken: pushToken)
-        }
-    }
-
-    func connectToFcm() {
-        FIRMessaging.messaging().connect { (error) in
-            if let e = error {
-                print("Unable to connect with FCM. \(e)")
-            } else {
-                print("Connected to FCM.")
-            }
         }
     }
 
@@ -301,6 +263,8 @@ AFEventSubscriber {
 
             }))
             self.window?.rootViewController?.presentVC(popup)
+        } else if event.name == .eventTotalUnreadCountChange {
+            self.updateTabBarBadge(nil)
         }
     }
 
