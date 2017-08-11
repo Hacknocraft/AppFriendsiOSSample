@@ -54,8 +54,22 @@ class LoginViewController: BaseViewController {
 
         // need to initialize AppFriendsUI first.
         // replace the key and secret to switch to different app
-        let key = "t3i23J6cnFUjtZaupVTGowtt"
-        let secret = "FIVeZO8ocQD5XJZ1HAyhYgtt"
+        var key = ""
+        var secret = ""
+
+        if Environment.current == .sandbox {
+            key = "c3ZsINZMGHdGmbY3S6pcVgtt"
+            secret = "FhsajDeh6XXBF143m82sKwtt"
+        } else if Environment.current == .testing {
+            key = "A5de6lwrkIsnRhraNVsSzgtt"
+            secret = "D8EFZB2xtGSYd2vDBzWPyQtt"
+        } else if Environment.current == .staging {
+            key = "t3i23J6cnFUjtZaupVTGowtt"
+            secret = "FIVeZO8ocQD5XJZ1HAyhYgtt"
+        } else {
+            key = "t3i23J6cnFUjtZaupVTGowtt"
+            secret = "FIVeZO8ocQD5XJZ1HAyhYgtt"
+        }
 
         AppFriendsUI.sharedInstance.initialize(key, secret: secret) { (success, error) in
 

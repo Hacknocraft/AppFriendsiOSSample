@@ -128,6 +128,7 @@ class ProfileViewController: UITableViewController {
             self.navigationItem.rightBarButtonItem = chatBarItem
 
             let logoutButton = UIButton(type: .custom)
+            logoutButton.contentMode = .center
             logoutButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
             logoutButton.setImage(UIImage(named: "ic_logout"), for: .normal)
             logoutButton.addTarget(self, action: #selector(ProfileViewController.logout(_:)), for: .touchUpInside)
@@ -197,10 +198,12 @@ class ProfileViewController: UITableViewController {
                 NSLog("\(err.localizedDescription)")
             } else if let id = dialogID {
                 self.title = ""
-                let dialogVC = HCDialogChatViewController(dialogID: id,
-                                                          supportedMessageDataTypes: .all,
-                                                          requireReceipts: true,
-                                                          shouldAllowTagging: true)
+                guard let dialogVC = HCDialogChatViewController(dialogID: id,
+                                                                supportedMessageDataTypes: .all,
+                                                                requireReceipts: true,
+                                                                shouldAllowTagging: true) else {
+                                                                    return
+                }
                 self.navigationController?.pushViewController(dialogVC, animated: true)
             }
         }
