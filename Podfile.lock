@@ -20,27 +20,28 @@ PODS:
   - Base64 (1.1.2)
   - Cloudinary (1.0.15)
   - CLTokenInputView (2.3.0)
-  - CoreStore (4.0.5)
-  - Crashlytics (3.8.5):
+  - CoreStore (4.1.1)
+  - Crashlytics (3.8.6):
     - Fabric (~> 1.6.3)
-  - EZSwiftExtensions (1.10)
-  - Fabric (1.6.12)
-  - Firebase/Core (4.0.4):
-    - FirebaseAnalytics (= 4.0.2)
-    - FirebaseCore (= 4.0.4)
-  - Firebase/Messaging (4.0.4):
+  - EZSwiftExtensions (1.11)
+  - Fabric (1.6.13)
+  - Firebase/Core (4.1.1):
+    - FirebaseAnalytics (= 4.0.3)
+    - FirebaseCore (= 4.0.6)
+  - Firebase/Messaging (4.1.1):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.0)
-  - FirebaseAnalytics (4.0.2):
+    - FirebaseMessaging (= 2.0.2)
+  - FirebaseAnalytics (4.0.3):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (4.0.4):
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.6):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseInstanceID (2.0.0):
+  - FirebaseInstanceID (2.0.2):
     - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.0.0):
+  - FirebaseMessaging (2.0.2):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -59,7 +60,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Protobuf (3.3.0)
+  - Protobuf (3.4.0)
   - RSKImageCropper (1.6.3)
   - SlackTextViewController (1.9.5)
   - Socket.IO-Client-Swift (8.3.3)
@@ -93,13 +94,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AppFriendsCore:
-    :commit: f5d102f34d11d3d124dd6489512e53c3a2d103f8
+    :commit: 8859e8cdec0e46ef54bf0cac4b4fd803a8993d79
     :git: https://github.com/Hacknocraft/AppFriendsCore.git
   AppFriendsUI:
-    :commit: 7f28a287f067528f59a5a960e21993dd37f83d6e
+    :commit: c6e04fd10c367758884e9da87f416c178386797b
     :git: https://github.com/Hacknocraft/AppFriendsUI.git
   CoreStore:
-    :commit: 74c64619c3c9e16e017d5e926efae95cb0133398
+    :commit: 0b57cff27ddd89013e5c9b301a3e832ced6d4bd3
     :git: https://github.com/JohnEstropia/CoreStore.git
   SlackTextViewController:
     :commit: 673a102a75afed0157e7a6795234736941af45ae
@@ -114,24 +115,24 @@ SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
   CLTokenInputView: 9dc1ffb7c9d2d81787e69a63c75bd97b0b2d1e76
-  CoreStore: 49aec4c6e039ef607c2b55a8c6991e71935ce48e
-  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
-  EZSwiftExtensions: 172160bfb3635161c8b833d9111961ff3e6f517d
-  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
-  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
-  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
-  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
-  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
-  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
+  CoreStore: 8971549d69b3885cd3542c7cc6a597059635e690
+  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
+  EZSwiftExtensions: 84000042202d9fd574f626cda3064143f27fa767
+  Fabric: 2fb5676bc811af011a04513451f463dac6803206
+  Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
+  FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
+  FirebaseCore: 28def3c643989c97ea5a69ea5000f5fa9902b9fd
+  FirebaseInstanceID: c4c7fca62c7b7330caee5da04f19a37ea37bb1c1
+  FirebaseMessaging: 85af6c27188538b3a6f7dfd0b3b0596358cb0c39
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   JGProgressHUD: 1617b0940cf80bb53e8f7d6f0fd69252ea45d6d4
   JWT: cf73c0ab0dac762df3de8a3f1164352089d97780
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   RSKImageCropper: 356e36fc58c57c371b5d8b23d603936d6a73df6c
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   Socket.IO-Client-Swift: a2faffdbde89c63aebc5d631041530c1068b02b8
 
-PODFILE CHECKSUM: ab5c18af520c580f9d92e93f577ce6e4cb82a0a2
+PODFILE CHECKSUM: 604920c065ea141df922050b9a3aadc6f08d1ed8
 
 COCOAPODS: 1.3.1

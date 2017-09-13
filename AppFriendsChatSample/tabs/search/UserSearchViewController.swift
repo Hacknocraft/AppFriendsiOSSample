@@ -23,10 +23,13 @@ class UserSearchViewController: HCUserSearchViewController {
     }
 
     override func viewDidLoad() {
+        self.title = "Search"
         super.viewDidLoad()
 
-        self.title = "Search"
-
+        let searchIcon = UIImageView(image: UIImage(named: "ic_search"))
+        searchIcon.contentMode = .center
+        searchIcon.alpha = 0.2
+        self.tableView.backgroundView = searchIcon
     }
 
     // MARK: Table 

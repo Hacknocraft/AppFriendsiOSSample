@@ -36,9 +36,9 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
 
-        self.includeChannels = false
+        self.includeChannels = true
+        super.viewDidLoad()
 
         self.navigationItem.rightBarButtonItem = self.rightBarButtonItem()
         self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 75, bottom: 0, right: 0)
@@ -79,12 +79,12 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     // MARK: Style the view
 
     func tableHeaderView() -> UIView? {
-
-        let headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.w, height: 25)
-        headerView.addBorderBottom(size: 1, color: AppFriendsColor.coolGray!)
-
-        return headerView
+//        let headerView = UIView()
+//        headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.w, height: 25)
+//        headerView.addBorderBottom(size: 1, color: AppFriendsColor.coolGray!)
+//
+//        return headerView
+        return nil
     }
 
     func tableFooterView() -> UIView? {
