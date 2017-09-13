@@ -27,7 +27,7 @@ enum AppFriendsEnvironment {
 }
 
 struct Environment {
-    static let current: AppFriendsEnvironment = .production
+    static let current: AppFriendsEnvironment = .sandbox
 }
 
 @UIApplicationMain
@@ -50,7 +50,16 @@ AFEventSubscriber {
         let appFriendsCore = HCSDKCore.sharedInstance
         appFriendsCore.enableDebug()
 
+        if Environment.current == .sandbox {
+            appFriendsCore.setValue(true, forKey: "useSandbox")
+        } else if Environment.current == .staging {
+            appFriendsCore.setValue(true, forKey: "staging")
+        } else if Environment.current == .testing {
+            appFriendsCore.setValue(true, forKey: "stressTest")
+        }
+
         UsersDataBase.sharedInstance.loadUsers()
+
         Fabric.with([Crashlytics.self])
 
         // Handle notification

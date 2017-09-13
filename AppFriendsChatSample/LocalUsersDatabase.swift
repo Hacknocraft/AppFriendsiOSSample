@@ -16,6 +16,15 @@ class UsersDataBase {
 
     static let sharedInstance = UsersDataBase()
 
+    /// a list of user ids of the users who the current user is following
+    open var following = [String]()
+
+    /// a list of user ids of the users who are following the current user
+    open var followers = [String]()
+
+    /// a list of user ids of the users who are friends with the current user
+    open var friends = [String]()
+
     func loadUsers() {
 
         // load seed users from a json
@@ -90,5 +99,29 @@ class UsersDataBase {
         }
 
         return nil
+    }
+
+    func loadFollowers() {
+        AFUser.getFollowers { (users, error) in
+            if error == nil, let userIDs = users {
+                self.followers = userIDs
+            }
+        }
+    }
+
+    func loadFollowings() {
+        AFUser.getFollowing { (users, error) in
+            if error == nil, let userIDs = users {
+                self.following = userIDs
+            }
+        }
+    }
+
+    func loadFriends() {
+        AFUser.getFriends { (users, error) in
+            if error == nil, let userIDs = users {
+                self.friends = userIDs
+            }
+        }
     }
 }

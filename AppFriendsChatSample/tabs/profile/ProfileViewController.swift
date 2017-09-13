@@ -13,10 +13,9 @@ import AppFriendsCore
 
 import AlamofireImage
 
-class ProfileViewController: UITableViewController {
+class ProfileViewController: UITableViewController, UserProfileTableViewCellDelegate {
 
-    var _chatButton: UIButton?
-    var _followButton: UIButton?
+    var _topChatButton: UIButton?
 
     var _userAvatarUR: String?
     var _userName: String?
@@ -56,10 +55,15 @@ class ProfileViewController: UITableViewController {
                                 forCellReuseIdentifier: "UserProfileTableViewCell")
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
 
+        self.tableView.tableFooterView = UIView()
+
+        self.tableView.separatorColor = .clear
+        self.tableView.separatorStyle = .none
+
         // create chat button
         layoutNavigationBarItem()
 
-        self._chatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
+        self._topChatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
 
         if _userID == nil {
             _userID = HCSDKCore.sharedInstance.currentUserID()
@@ -85,7 +89,7 @@ class ProfileViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self._chatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
+        self._topChatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,10 +104,10 @@ class ProfileViewController: UITableViewController {
 
             if let count = notification?.object as? NSNumber {
 
-                self._chatButton?.badge = "\(count)"
+                self._topChatButton?.badge = "\(count)"
             } else {
 
-                self._chatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
+                self._topChatButton?.badge = "\(AFDialog.totalUnreadMessageCount())"
             }
         })
     }
@@ -119,12 +123,12 @@ class ProfileViewController: UITableViewController {
         if isCurrentUsr() {
             // if it's the current user, we show the chat button
 
-            _chatButton = UIButton(type: .custom)
-            _chatButton?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            _chatButton?.setImage(UIImage(named: "chat"), for: .normal)
-            _chatButton?.addTarget(self, action: #selector(ProfileViewController.chat(_:)), for: .touchUpInside)
+            _topChatButton = UIButton(type: .custom)
+            _topChatButton?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            _topChatButton?.setImage(UIImage(named: "chat"), for: .normal)
+            _topChatButton?.addTarget(self, action: #selector(ProfileViewController.chat(_:)), for: .touchUpInside)
 
-            let chatBarItem = UIBarButtonItem(customView: _chatButton!)
+            let chatBarItem = UIBarButtonItem(customView: _topChatButton!)
             self.navigationItem.rightBarButtonItem = chatBarItem
 
             let logoutButton = UIButton(type: .custom)
@@ -177,6 +181,69 @@ class ProfileViewController: UITableViewController {
         self.presentVC(nav)
     }
 
+    // MARK: UserProfileTableViewCellDelegate
+
+    func followButtonTapped() {
+        if let userID = _userID, !UsersDataBase.sharedInstance.following.contains(userID) {
+            AFUser.followUser(userID: userID, completion: { (error) in
+                if error != nil {
+                    self.showAlert("Error", message: error?.localizedDescription ?? "")
+                } else {
+                    UsersDataBase.sharedInstance.following.append(userID)
+                    self.tableView.reloadData()
+                }
+            })
+        } else if let userID = _userID {
+            AFUser.unfollowUser(userID: userID, completion: { (error) in
+                if error != nil {
+                    self.showAlert("Error", message: error?.localizedDescription ?? "")
+                    self.tableView.reloadData()
+                } else {
+                    UsersDataBase.sharedInstance.following.removeFirst(userID)
+                    self.tableView.reloadData()
+                }
+            })
+        }
+    }
+
+    func chatButtonTapped() {
+        if let userID = _userID {
+            AFDialog.createIndividualDialog(withUser: userID) { (dialogID, error) in
+
+                if let err = error, let description = error?.localizedDescription {
+                    NSLog("\(err.localizedDescription)")
+                    self.showAlert("Error", message: description)
+                } else if let id = dialogID {
+                    self.showChatView(id)
+                }
+            }
+        }
+    }
+
+    func blockButtonTapped() {
+
+        if let user = _user, user.blocked {
+            AFUser.unblockUser(userID: user.id, completion: { (error) in
+                if let err = error {
+                    self.showAlert("Error", message: err.localizedDescription)
+                } else {
+                    self.showAlert("Success", message: "You have unblocked the user")
+                    self.tableView.reloadData()
+                }
+            })
+        } else if let userID = _userID {
+            AFUser.blockUser(userID: userID, completion: { (error) in
+
+                if let err = error {
+                    self.showAlert("Error", message: err.localizedDescription)
+                } else {
+                    self.showAlert("Success", message: "You have blocked the user")
+                    self.tableView.reloadData()
+                }
+            })
+        }
+    }
+
     // MARK: show alert
 
     func showAlert(_ title: String, message: String) {
@@ -217,57 +284,12 @@ class ProfileViewController: UITableViewController {
 
         if AFSession.isLoggedIn() {
 
-            if self.isCurrentUsr() {
-                return 1
-            } else {
-                return 3
-            }
+            return 1
         }
-
         return 0
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        // start a chat with this user
-        if (indexPath as NSIndexPath).row == 1, let userID = _userID {
-
-            AFDialog.createIndividualDialog(withUser: userID) { (dialogID, error) in
-
-                if let err = error, let description = error?.localizedDescription {
-                    NSLog("\(err.localizedDescription)")
-                    self.showAlert("Error", message: description)
-                } else if let id = dialogID {
-                    self.showChatView(id)
-                }
-            }
-
-        } else if (indexPath as NSIndexPath).row == 2, let userID = _userID {
-
-            if let user = _user, user.blocked {
-
-                AFUser.unblockUser(userID: userID, completion: { (error) in
-
-                    if let err = error {
-                        self.showAlert("Error", message: err.localizedDescription)
-                    } else {
-                        self.showAlert("Success", message: "You have unblocked the user")
-                        self.tableView.reloadData()
-                    }
-                })
-            } else {
-
-                AFUser.blockUser(userID: userID, completion: { (error) in
-
-                    if let err = error {
-                        self.showAlert("Error", message: err.localizedDescription)
-                    } else {
-                        self.showAlert("Success", message: "You have blocked the user")
-                        self.tableView.reloadData()
-                    }
-                })
-            }
-        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -280,35 +302,33 @@ class ProfileViewController: UITableViewController {
             }
 
             userProfileCell.selectionStyle = .none
+            userProfileCell.delegate = self
             userProfileCell.usernameLabel.text = _userName
             if let avatar = _userAvatarUR, let url = URL(string: avatar) {
                 userProfileCell.userAvatarView.af_setImage(withURL: url)
             }
 
-            return userProfileCell
-        } else if (indexPath as NSIndexPath).row == 1 {
-            let chatCell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
-            chatCell.accessoryType = .disclosureIndicator
-            chatCell.textLabel!.text = "Chat"
-            return chatCell
-        } else {
-            let blockCell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
-            blockCell.accessoryType = .none
+            userProfileCell.followButton.isHidden = self.isCurrentUsr()
+            userProfileCell.chatButton.isHidden = self.isCurrentUsr()
+            userProfileCell.blockButton.isHidden = self.isCurrentUsr()
 
-            if let user = _user, user.blocked {
-                blockCell.textLabel?.text = "Unblock"
-            } else {
-                blockCell.textLabel!.text = "Block"
+            if let userID = _userID {
+                userProfileCell.followButton.isSelected = UsersDataBase.sharedInstance.following.contains(userID)
             }
+            userProfileCell.blockButton.isSelected = _user?.blocked ?? false
 
-            return blockCell
+            userProfileCell.separatorInset = UIEdgeInsets(top: 0, left: 0,
+                                                          bottom: 0, right: .greatestFiniteMagnitude)
+
+            return userProfileCell
         }
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         if (indexPath as NSIndexPath).row == 0 {
-            return 170
+            return 240
         }
 
         return 40

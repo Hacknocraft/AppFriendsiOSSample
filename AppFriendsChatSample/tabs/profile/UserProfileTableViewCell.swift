@@ -8,10 +8,23 @@
 
 import UIKit
 
+@objc
+protocol UserProfileTableViewCellDelegate {
+
+    func followButtonTapped()
+    func chatButtonTapped()
+    func blockButtonTapped()
+}
+
 class UserProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userAvatarView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var blockButton: UIButton!
+
+    weak var delegate: UserProfileTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,4 +44,15 @@ class UserProfileTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func followButtonTapped(_ sender: Any) {
+        delegate?.followButtonTapped()
+    }
+
+    @IBAction func chatButtonTapped(_ sender: Any) {
+        delegate?.chatButtonTapped()
+    }
+
+    @IBAction func blockButtonTapped(_ sender: Any) {
+        delegate?.blockButtonTapped()
+    }
 }
