@@ -208,15 +208,7 @@ class ProfileViewController: UITableViewController, UserProfileTableViewCellDele
 
     func chatButtonTapped() {
         if let userID = _userID {
-            AFDialog.createIndividualDialog(withUser: userID) { (dialogID, error) in
-
-                if let err = error, let description = error?.localizedDescription {
-                    NSLog("\(err.localizedDescription)")
-                    self.showAlert("Error", message: description)
-                } else if let id = dialogID {
-                    self.showChatView(id)
-                }
-            }
+            self.showChatView(userID)
         }
     }
 
