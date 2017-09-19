@@ -133,6 +133,10 @@ class ProfileViewController: UITableViewController, UserProfileTableViewCellDele
 
             let logoutButton = UIButton(type: .custom)
             logoutButton.contentMode = .center
+            let widthConstraint = logoutButton.widthAnchor.constraint(equalToConstant: 30)
+            let heightConstraint = logoutButton.heightAnchor.constraint(equalToConstant: 30)
+            heightConstraint.isActive = true
+            widthConstraint.isActive = true
             logoutButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
             logoutButton.setImage(UIImage(named: "ic_logout"), for: .normal)
             logoutButton.addTarget(self, action: #selector(ProfileViewController.logout(_:)), for: .touchUpInside)

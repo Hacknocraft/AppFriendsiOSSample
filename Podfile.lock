@@ -94,13 +94,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AppFriendsCore:
-    :commit: 8859e8cdec0e46ef54bf0cac4b4fd803a8993d79
+    :commit: be69d953423efc4b19694d6dbcf3572b902a1479
     :git: https://github.com/Hacknocraft/AppFriendsCore.git
   AppFriendsUI:
     :commit: c6e04fd10c367758884e9da87f416c178386797b
     :git: https://github.com/Hacknocraft/AppFriendsUI.git
   CoreStore:
-    :commit: 0b57cff27ddd89013e5c9b301a3e832ced6d4bd3
+    :commit: 2a62770552e0fb1506a6ba1b54a6f3154c7d64c0
     :git: https://github.com/JohnEstropia/CoreStore.git
   SlackTextViewController:
     :commit: 673a102a75afed0157e7a6795234736941af45ae
