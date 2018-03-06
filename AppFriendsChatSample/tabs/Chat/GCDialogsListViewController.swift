@@ -10,6 +10,7 @@ import UIKit
 import AppFriendsCore
 import CoreStore
 import AppFriendsUI
+import SwifterSwift
 
 class GCDialogsListViewController: HCDialogsListViewController, GCDialogContactsPickerViewControllerDelegate, AFEventSubscriber {
 
@@ -67,7 +68,7 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
         super.viewWillDisappear(animated)
     }
 
-    func handlePush(notification: Notification) {
+    @objc func handlePush(notification: Notification) {
 
         if let dialog = notification.object as? AFDialog {
             DispatchQueue.main.async(execute: {
@@ -90,7 +91,7 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     func tableFooterView() -> UIView? {
 
         let footerView = UIView()
-        footerView.frame = CGRect(x: 0, y: 0, width: self.tableView.w, height: 75)
+        footerView.frame = CGRect(x: 0, y: 0, width: self.tableView.width, height: 75)
         footerView.addBorderTop(size: 1, color: AppFriendsColor.coolGray!)
 
         return footerView
@@ -110,9 +111,9 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
 
     // MARK: - New Conversation
 
-    func createNewConversation() {
+    @objc func createNewConversation() {
 
-        let dialogStarterVC = GCDialogContactsPickerViewController(viewTitle:"New Conversation", excludeUsers: nil)
+        let dialogStarterVC = GCDialogContactsPickerViewController(viewTitle: "New Conversation", excludeUsers: nil)
         let nav = UINavigationController(rootViewController: dialogStarterVC)
         dialogStarterVC.delegate = self
 
@@ -120,7 +121,8 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
             nav.modalPresentationStyle = .formSheet
             nav.preferredContentSize = CGSize(width: 600, height: 520)
         }
-        self.presentVC(nav)
+
+        self.present(nav, animated: true, completion: nil)
     }
 
     // MARK: - GCDialogStarterViewControllerDelegate
@@ -128,7 +130,7 @@ class GCDialogsListViewController: HCDialogsListViewController, GCDialogContacts
     func usersSelected(_ users: [String]) {
 
         self.showLoading("")
-        if users.count == 1, let userID = users.get(at: 0) {
+        if users.count == 1, let userID = users.first {
             AFDialog.createIndividualDialog(withUser: userID, completion: { (id, error) in
 
                 if error != nil {

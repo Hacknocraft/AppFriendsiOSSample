@@ -9,6 +9,7 @@
 import UIKit
 import AlamofireImage
 import Alamofire
+import SwifterSwift
 
 // AppFriends
 import AppFriendsUI
@@ -43,7 +44,7 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userAvatarImage.layer.cornerRadius = userAvatarImage.w/2
+        userAvatarImage.layer.cornerRadius = userAvatarImage.width/2
         userAvatarImage.layer.masksToBounds = true
 
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString"),
@@ -69,6 +70,8 @@ class LoginViewController: BaseViewController {
         } else {
             key = "t3i23J6cnFUjtZaupVTGowtt"
             secret = "FIVeZO8ocQD5XJZ1HAyhYgtt"
+//            key = "AHiXnotYkL6UGIye8bOMZAtt"
+//            secret = "LQvzYFbmWtfqQczMYzmmPAtt"
         }
 
         AppFriendsUI.sharedInstance.initialize(key, secret: secret) { (success, error) in

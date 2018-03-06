@@ -10,7 +10,7 @@ import UIKit
 import AppFriendsCore
 import AppFriendsUI
 
-fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -21,7 +21,7 @@ fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-fileprivate func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l > r
@@ -207,15 +207,15 @@ UITableViewDelegate, UITableViewDataSource, AFTokenInputViewDelegate {
         return closeItem
     }
 
-    func close() {
+    @objc func close() {
         if self.navigationController?.viewControllers.count > 1 {
             _ = self.navigationController?.popViewController(animated: true)
         } else {
-            self.dismissVC(completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
-    func done() {
+    @objc func done() {
 
         if self.userSelectedIDs.count > 0 {
             self.delegate?.usersSelected(self.userSelectedIDs)
@@ -260,11 +260,12 @@ UITableViewDelegate, UITableViewDataSource, AFTokenInputViewDelegate {
 
         let headerView = UIView()
         headerView.backgroundColor = AppFriendsColor.coolGreyLighter
-        headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.w, height: 25)
+        headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.width, height: 25)
         headerView.addBorderTop(size: 1, color: AppFriendsColor.coolGray!)
         headerView.addBorderBottom(size: 1, color: AppFriendsColor.coolGray!)
 
-        let headerTitle = UILabel(x: 20, y: 0, w: tableView.w, h: 25, fontSize: 13)
+        let headerTitle = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.width, height: 25))
+        headerTitle.font = UIFont.systemFont(ofSize: 13)
         headerTitle.textColor = AppFriendsColor.coolGreyDark
         if let keys = filteredSectionKeys {
             headerTitle.text = keys[section]
@@ -336,7 +337,7 @@ UITableViewDelegate, UITableViewDataSource, AFTokenInputViewDelegate {
         let userName = "\(nameInfo["first"] ?? "") \(nameInfo["last"] ?? "")"
         let userID = loginInfo["md5"]!
         if userSelectedIDs.contains(userID) {
-            userSelectedIDs.removeFirst(userID)
+            userSelectedIDs.removeAll(userID)
         } else {
             userSelectedIDs.append(userID)
         }
@@ -365,7 +366,7 @@ UITableViewDelegate, UITableViewDataSource, AFTokenInputViewDelegate {
         if let userID = token.context as? String {
 
             if userSelectedIDs.contains(userID) {
-                userSelectedIDs.removeFirst(userID)
+                userSelectedIDs.removeAll(userID)
                 self.tableView.reloadData()
             }
         }
@@ -378,7 +379,7 @@ UITableViewDelegate, UITableViewDataSource, AFTokenInputViewDelegate {
     func tokenInputView(_ view: AFTokenInputView, didChangeText text: String?) {
 
         // filter users
-        if let t = text, !t.isBlank {
+        if let t = text, !t.isEmpty {
             filterUsersInfo(t)
             self.tableView.reloadData()
         } else {

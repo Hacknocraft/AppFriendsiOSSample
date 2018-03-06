@@ -8,6 +8,7 @@
 
 import UIKit
 import AppFriendsUI
+import SwifterSwift
 
 class GCDialogMembersListViewController: BaseViewController,
 UITableViewDelegate, UITableViewDataSource,
@@ -56,8 +57,7 @@ GCDialogContactsPickerViewControllerDelegate, AFEventSubscriber {
     func tableFooterView() -> UIView? {
 
         let footerView = UIView()
-        footerView.frame = CGRect(x: 0, y: 0, width: self.tableView.w, height: 75)
-        footerView.addBorderTop(size: 1, color: AppFriendsColor.coolGray!)
+        footerView.frame = CGRect(x: 0, y: 0, width: self.tableView.width, height: 75)
 
         return footerView
     }
@@ -65,8 +65,7 @@ GCDialogContactsPickerViewControllerDelegate, AFEventSubscriber {
     func tableHeaderView() -> UIView? {
 
         let headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.w, height: 25)
-        headerView.addBorderBottom(size: 1, color: AppFriendsColor.coolGray!)
+        headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.width, height: 25)
 
         return headerView
     }
@@ -132,12 +131,12 @@ GCDialogContactsPickerViewControllerDelegate, AFEventSubscriber {
         return closeItem
     }
 
-    func close() {
+    @objc func close() {
 
         _ = self.navigationController?.popViewController(animated: true)
     }
 
-    func addMember() {
+    @objc func addMember() {
 
         var memberIDs = [String]()
         if let members = _members {
@@ -145,7 +144,7 @@ GCDialogContactsPickerViewControllerDelegate, AFEventSubscriber {
                 memberIDs.append(member.id)
             }
         }
-        let contactSelectionVC = GCDialogContactsPickerViewController(viewTitle:"Add Members", excludeUsers: memberIDs)
+        let contactSelectionVC = GCDialogContactsPickerViewController(viewTitle: "Add Members", excludeUsers: memberIDs)
         contactSelectionVC.delegate = self
         self.navigationController?.pushViewController(contactSelectionVC, animated: true)
     }

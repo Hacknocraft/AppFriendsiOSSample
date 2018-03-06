@@ -1,57 +1,53 @@
 PODS:
-  - Alamofire (4.4.0)
-  - AlamofireImage (3.2.0):
-    - Alamofire (~> 4.1)
-  - AppFriendsCore (2.1.0):
-    - Alamofire (~> 4.4.0)
+  - Alamofire (4.5.1)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
+  - AppFriendsCore (2.2.0):
+    - Alamofire (~> 4.5.1)
     - Cloudinary (~> 1.0.15)
-    - CoreStore (~> 4.0)
+    - CoreStore (~> 5.0)
     - JWT (~> 2.2.0)
-    - Socket.IO-Client-Swift (~> 8.3.0)
-  - AppFriendsFloatingWidget (1.0.5):
-    - AppFriendsCore (~> 2.0)
-    - AppFriendsUI (~> 2.1)
-    - RSKImageCropper (~> 1.6.1)
-  - AppFriendsUI (2.2.0):
-    - AlamofireImage (~> 3.1)
+    - Socket.IO-Client-Swift (~> 12.0.0)
+  - AppFriendsFloatingWidget (1.2.0):
     - AppFriendsCore
+    - AppFriendsUI
+    - RSKImageCropper (~> 2.0.0)
+  - AppFriendsUI (2.3.3):
+    - AlamofireImage (~> 3.3)
+    - AppFriendsCore (~> 2.2)
     - JGProgressHUD (~> 1.4)
-    - SlackTextViewController (~> 1.9.5)
   - Base64 (1.1.2)
   - Cloudinary (1.0.15)
-  - CLTokenInputView (2.3.0)
-  - CoreStore (4.1.1)
-  - Crashlytics (3.8.6):
-    - Fabric (~> 1.6.3)
-  - EZSwiftExtensions (1.11)
-  - Fabric (1.6.13)
-  - Firebase/Core (4.1.1):
-    - FirebaseAnalytics (= 4.0.3)
-    - FirebaseCore (= 4.0.6)
-  - Firebase/Messaging (4.1.1):
+  - CoreStore (5.0.0)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - Fabric (1.7.5)
+  - Firebase/Core (4.9.0):
+    - FirebaseAnalytics (= 4.0.9)
+    - FirebaseCore (= 4.0.15)
+  - Firebase/Messaging (4.9.0):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.2)
-  - FirebaseAnalytics (4.0.3):
+    - FirebaseMessaging (= 2.1.0)
+  - FirebaseAnalytics (4.0.9):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.6):
+  - FirebaseCore (4.0.15):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-    - nanopb (~> 0.3)
-  - FirebaseInstanceID (2.0.2):
+  - FirebaseInstanceID (2.0.9):
     - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.0.2):
+  - FirebaseMessaging (2.1.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
-  - GoogleToolboxForMac/Defines (2.1.1)
-  - GoogleToolboxForMac/Logger (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSData+zlib (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/Logger (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - JGProgressHUD (1.4)
   - JWT (2.2.0):
     - Base64 (~> 1.1.2)
@@ -60,79 +56,61 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Protobuf (3.4.0)
-  - RSKImageCropper (1.6.3)
-  - SlackTextViewController (1.9.5)
-  - Socket.IO-Client-Swift (8.3.3)
+  - Protobuf (3.5.0)
+  - RSKImageCropper (2.0.0)
+  - Socket.IO-Client-Swift (12.0.0):
+    - StarscreamSocketIO (~> 8.0.7)
+  - StarscreamSocketIO (8.0.7)
+  - SwifterSwift (4.1.1):
+    - SwifterSwift/AppKit (= 4.1.1)
+    - SwifterSwift/CoreGraphics (= 4.1.1)
+    - SwifterSwift/CoreLocation (= 4.1.1)
+    - SwifterSwift/Foundation (= 4.1.1)
+    - SwifterSwift/SwiftStdlib (= 4.1.1)
+    - SwifterSwift/UIKit (= 4.1.1)
+  - SwifterSwift/AppKit (4.1.1)
+  - SwifterSwift/CoreGraphics (4.1.1)
+  - SwifterSwift/CoreLocation (4.1.1)
+  - SwifterSwift/Foundation (4.1.1)
+  - SwifterSwift/SwiftStdlib (4.1.1)
+  - SwifterSwift/UIKit (4.1.1)
 
 DEPENDENCIES:
-  - AppFriendsCore (from `https://github.com/Hacknocraft/AppFriendsCore.git`, branch `swift3_2`)
-  - AppFriendsFloatingWidget (~> 1.0.5)
-  - AppFriendsUI (from `https://github.com/Hacknocraft/AppFriendsUI.git`, branch `swift3_2`)
-  - CLTokenInputView
-  - CoreStore (from `https://github.com/JohnEstropia/CoreStore.git`, branch `prototype/Swift_3_2`)
+  - AppFriendsCore (~> 2.2)
+  - AppFriendsFloatingWidget
+  - AppFriendsUI (~> 2.3.2)
   - Crashlytics
-  - EZSwiftExtensions (~> 1.8)
   - Fabric
   - Firebase/Core
   - Firebase/Messaging
-  - SlackTextViewController (from `https://github.com/Hacknocraft/SlackTextViewController.git`, branch `master`)
-
-EXTERNAL SOURCES:
-  AppFriendsCore:
-    :branch: swift3_2
-    :git: https://github.com/Hacknocraft/AppFriendsCore.git
-  AppFriendsUI:
-    :branch: swift3_2
-    :git: https://github.com/Hacknocraft/AppFriendsUI.git
-  CoreStore:
-    :branch: prototype/Swift_3_2
-    :git: https://github.com/JohnEstropia/CoreStore.git
-  SlackTextViewController:
-    :branch: master
-    :git: https://github.com/Hacknocraft/SlackTextViewController.git
-
-CHECKOUT OPTIONS:
-  AppFriendsCore:
-    :commit: be69d953423efc4b19694d6dbcf3572b902a1479
-    :git: https://github.com/Hacknocraft/AppFriendsCore.git
-  AppFriendsUI:
-    :commit: 542deac3c12d1e1e6f7a6bc34eb25fcd586b3b4a
-    :git: https://github.com/Hacknocraft/AppFriendsUI.git
-  CoreStore:
-    :commit: 2a62770552e0fb1506a6ba1b54a6f3154c7d64c0
-    :git: https://github.com/JohnEstropia/CoreStore.git
-  SlackTextViewController:
-    :commit: 673a102a75afed0157e7a6795234736941af45ae
-    :git: https://github.com/Hacknocraft/SlackTextViewController.git
+  - SwifterSwift
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  AppFriendsCore: 9e74be67ae4eb12d168154a1958f95c5791ccd28
-  AppFriendsFloatingWidget: 20e25e57835470d8c784ecce4ae1372a5123c38b
-  AppFriendsUI: dd1bf70dc585da75bda673f0bfc47f497f0d133c
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  AppFriendsCore: bedf108e8a62f8dc70c128fb4008b1ace74a4d39
+  AppFriendsFloatingWidget: 2951ef37c68626427a2395db5567ff8ff056ac13
+  AppFriendsUI: c7514d440d9688b4ff672aa2f01b4db1aed1f5e3
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
-  CLTokenInputView: 9dc1ffb7c9d2d81787e69a63c75bd97b0b2d1e76
-  CoreStore: 8971549d69b3885cd3542c7cc6a597059635e690
-  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
-  EZSwiftExtensions: 84000042202d9fd574f626cda3064143f27fa767
-  Fabric: 2fb5676bc811af011a04513451f463dac6803206
-  Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
-  FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
-  FirebaseCore: 28def3c643989c97ea5a69ea5000f5fa9902b9fd
-  FirebaseInstanceID: c4c7fca62c7b7330caee5da04f19a37ea37bb1c1
-  FirebaseMessaging: 85af6c27188538b3a6f7dfd0b3b0596358cb0c39
-  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  CoreStore: 9e781fffdc8450ed78d78eba2a5be5940e161c49
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  Fabric: ae7146a5f505ea370a1e44820b4b1dc8890e2890
+  Firebase: 632216af3ed7f31e3be34776947fdc7546cfb572
+  FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
+  FirebaseCore: 3bd047463058fa6b5d312c97502c52e45401cdfb
+  FirebaseInstanceID: d2058a35e9bebda1b6dd42486b84917bde552a9d
+  FirebaseMessaging: 2bafab2d0f3ab3dfd753101c2c32995c2051b5da
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   JGProgressHUD: 1617b0940cf80bb53e8f7d6f0fd69252ea45d6d4
   JWT: cf73c0ab0dac762df3de8a3f1164352089d97780
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
-  RSKImageCropper: 356e36fc58c57c371b5d8b23d603936d6a73df6c
-  SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
-  Socket.IO-Client-Swift: a2faffdbde89c63aebc5d631041530c1068b02b8
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  RSKImageCropper: d9a1acbc0600bf8decc8f0d21895872c99a9e4cf
+  Socket.IO-Client-Swift: 5b0154b42b3892bfb4c44fa138cbeb8afec4f6ef
+  StarscreamSocketIO: 00b54e4208481ca5cef089545353aaf126bae16d
+  SwifterSwift: bfcae9d659dfd306d164f13f72cad09198f30723
 
-PODFILE CHECKSUM: 604920c065ea141df922050b9a3aadc6f08d1ed8
+PODFILE CHECKSUM: 7f6f8e9de6b08c83a5ddbde060a077384ea3afbc
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0

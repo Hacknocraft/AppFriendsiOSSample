@@ -9,6 +9,7 @@
 import UIKit
 import AppFriendsCore
 import AppFriendsUI
+import SwifterSwift
 
 /// Override the AppFriends provided chat view to change and extend chat functions
 class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate {
@@ -26,7 +27,18 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let dialog = self.currentDialog(), let title = dialog.title, dialog.type == .group && title.isBlank {
+        if #available(iOS 11.0, *), UIDevice.isIphoneX() {
+            self.view.bounds = self.view.bounds.insetBy(dx: 0, dy: 30)
+        }
+
+        if let dialog = self.currentDialog() {
+            AFMessage.getMessages(dialogID: dialog.id, startingFrom: nil, backward: true, count: 20) { (messages, _) in
+
+                print(messages?.count ?? 0)
+            }
+        }
+
+        if let dialog = self.currentDialog(), let title = dialog.title, dialog.type == .group && title.isEmpty {
             // show update dialog title banner
 
             let dialogNameBanner = GCInfoBannerView(frame: CGRect.zero)
@@ -92,7 +104,7 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
                 nav.preferredContentSize = CGSize(width: 600, height: 520)
             }
 
-            self.presentVC(nav)
+            self.present(nav, animated: true, completion: nil)
         }
     }
 
@@ -104,8 +116,7 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
 
         if tableView.isEqual(self.tableView) {
 
-            if let message = self.message(atIndexPath: indexPath), let isSystem = message.isSystem,
-                isSystem == false, message.isOutgoing() {
+            if let message = self.message(atIndexPath: indexPath), !message.isSystem, message.isOutgoing() {
 
                 let receiptVC = GCMessageReceiptViewController(message: message)
                 self.navigationController?.pushViewController(receiptVC, animated: true)
@@ -142,7 +153,7 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
             let message = self.message(atIndexPath: indexPath)
             if let senderID = message?.senderID {
                 let profileVC = ProfileViewController(userID: senderID)
-                self.pushVC(profileVC)
+                self.present(profileVC, animated: true, completion: nil)
             }
         }
     }
@@ -160,10 +171,9 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
             case "mention" :
                 break
             case "https" :
-                fallthrough
+                break
             case "http" :
                 UIApplication.shared.openURL(url)
-                break
             default: break
             }
         }
@@ -187,8 +197,8 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
 
             } else {
                 let initialLabel = UILabel(frame: CGRect(x: 0, y: 0,
-                                                         width: userAvatarImageView.w,
-                                                         height: userAvatarImageView.h))
+                                                         width: userAvatarImageView.width,
+                                                         height: userAvatarImageView.height))
                 initialLabel.tag = 999 // a tag
                 initialLabel.textAlignment = .center
                 // replace this to get user initial

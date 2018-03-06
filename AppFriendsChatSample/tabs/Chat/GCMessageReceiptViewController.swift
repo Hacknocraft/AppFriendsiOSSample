@@ -57,7 +57,7 @@ class GCMessageReceiptViewController: BaseViewController, UITableViewDelegate, U
                     if let members = dialog?.members {
                         self.unseenByUsers.append(contentsOf: members)
                         if let currentUser = AFUser.currentUser() {
-                            self.unseenByUsers.removeFirst(currentUser)
+                            self.unseenByUsers.removeAll(currentUser)
                         }
                         self.tableView.reloadData()
                     }
@@ -108,7 +108,7 @@ class GCMessageReceiptViewController: BaseViewController, UITableViewDelegate, U
     func addSeenUser(_ user: AFUser) {
 
         if self.unseenByUsers.contains(user) {
-            self.unseenByUsers.removeFirst(user)
+            self.unseenByUsers.removeAll(user)
         }
         if !self.seenByUsers.contains(user) {
             self.seenByUsers.append(user)
@@ -171,9 +171,9 @@ class GCMessageReceiptViewController: BaseViewController, UITableViewDelegate, U
             return nil
         }
 
-        header.backgroundView = UIView(x: 0, y: 0, w: tableView.w, h: 47)
+        header.backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.width, height: 47))
+
         header.backgroundView!.backgroundColor = AppFriendsColor.coolGreyLighter
-        header.addBorderBottom(size: 1, color: AppFriendsColor.coolGray!)
 
         if section == 0 && self.seenByUsers.count > 0 {
             header.headerTitle.text = "SEEN"

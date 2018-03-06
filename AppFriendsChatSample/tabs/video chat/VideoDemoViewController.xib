@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoDemoViewController" customModule="AFChatUISample" customModuleProvider="target">
+            <connections>
+                <outlet property="chatHolder" destination="nk7-qY-9kk" id="5sP-VB-fxu"/>
+                <outlet property="videoHolder" destination="dac-Q4-nMT" id="52a-zx-7fZ"/>
+                <outlet property="view" destination="iN0-l3-epB" id="QyP-9z-0f8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dac-Q4-nMT" userLabel="videoHolder">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nk7-qY-9kk" userLabel="chatHolder">
+                    <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                    <color key="backgroundColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="nk7-qY-9kk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="BMK-D6-0hE"/>
+                <constraint firstItem="dac-Q4-nMT" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="JrP-3l-plk"/>
+                <constraint firstItem="dac-Q4-nMT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vt1-pq-EhY"/>
+                <constraint firstItem="nk7-qY-9kk" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="ceR-Rc-T7B"/>
+                <constraint firstAttribute="bottom" secondItem="nk7-qY-9kk" secondAttribute="bottom" id="hwb-FF-um2"/>
+                <constraint firstItem="dac-Q4-nMT" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="w2T-2Z-NSQ"/>
+                <constraint firstItem="dac-Q4-nMT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ycV-fg-ziZ"/>
+                <constraint firstItem="nk7-qY-9kk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yvI-LA-5s1"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

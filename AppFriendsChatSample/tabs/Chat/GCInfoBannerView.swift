@@ -173,7 +173,7 @@ class GCInfoBannerView: UIView, UITextFieldDelegate {
         }
     }
 
-    func hideAnimated() {
+    @objc func hideAnimated() {
         self.hide(afterDelay: 0, animated: true)
     }
 
@@ -181,7 +181,7 @@ class GCInfoBannerView: UIView, UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
-        if let d = self.delegate, let text = textField.text, !text.isBlank {
+        if let d = self.delegate, let text = textField.text, !text.isEmpty {
             d.groupTitleChanged(self, text: text)
         }
 

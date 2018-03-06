@@ -8,7 +8,6 @@
 
 import UIKit
 import AppFriendsCore
-import EZSwiftExtensions
 
 // AppFriends
 import AppFriendsUI
@@ -140,6 +139,8 @@ AFEventSubscriber {
 
     func styleApp () {
 
+        window?.backgroundColor = .white
+
         UITabBar.appearance().backgroundColor = UIColor.white
 
         let navigationBarAppearace = UINavigationBar.appearance()
@@ -148,7 +149,7 @@ AFEventSubscriber {
         navigationBarAppearace.shadowImage = UIImage(named: "667c8c")
         navigationBarAppearace.tintColor = AppFriendsColor.ceruLean
         navigationBarAppearace.backgroundColor = UIColor.white
-        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
 
         HCColorPalette.chatBackgroundColor = UIColor.white
         HCColorPalette.emptyTableLabelColor = AppFriendsColor.charcoalGrey!
@@ -221,7 +222,7 @@ AFEventSubscriber {
         application.registerForRemoteNotifications()
     }
 
-    func tokenRefreshNotification(_ notification: Notification) {
+    @objc func tokenRefreshNotification(_ notification: Notification) {
         if let refreshedToken = InstanceID.instanceID().token() {
             print("GCM InstanceID token: \(refreshedToken)")
         }
@@ -256,8 +257,7 @@ AFEventSubscriber {
                           animationControllerForTransitionFrom fromVC: UIViewController,
                           to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 
-        fromVC.dismissVC(completion: nil)
-
+        fromVC.dismiss(animated: true, completion: nil)
         return nil
     }
 
@@ -271,7 +271,7 @@ AFEventSubscriber {
             popup.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
 
             }))
-            self.window?.rootViewController?.presentVC(popup)
+            self.window?.rootViewController?.present(popup, animated: true, completion: nil)
         } else if event.name == .eventTotalUnreadCountChange {
             self.updateTabBarBadge(nil)
         }

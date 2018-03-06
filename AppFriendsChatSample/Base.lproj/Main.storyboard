@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vl-Ln-pi0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vl-Ln-pi0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +15,7 @@
                 <navigationController id="4LM-9C-m3b" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Conversations" image="tabbarMessages" selectedImage="tabbarMessages" id="0Wu-x4-BGu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TL4-bc-0JA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -69,7 +70,7 @@
                 <navigationController id="kWH-7z-AbZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" id="o5V-uT-Snh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Nr-ky-B9v">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
@@ -240,6 +241,7 @@
                         <segue destination="EpO-UF-HhA" kind="relationship" relationship="viewControllers" id="gOn-Tf-UU4"/>
                         <segue destination="W0y-Zz-m3k" kind="relationship" relationship="viewControllers" id="34J-Jk-iL7"/>
                         <segue destination="4LM-9C-m3b" kind="relationship" relationship="viewControllers" id="bDX-60-OYX"/>
+                        <segue destination="8dr-9t-z2p" kind="relationship" relationship="viewControllers" id="95u-j6-8LP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yps-iC-zPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,7 +254,7 @@
                 <navigationController id="W0y-Zz-m3k" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Game" id="9wV-DC-HWV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oyy-oI-EZP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -262,6 +264,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Nl-1o-HnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1515" y="-306"/>
+        </scene>
+        <!--Live-->
+        <scene sceneID="3Hw-j6-f7o">
+            <objects>
+                <navigationController id="8dr-9t-z2p" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Live" image="tabbarOnAir" id="le2-f7-iOe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z0T-OU-B5J">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AGE-f3-2Zr" kind="relationship" relationship="rootViewController" id="OBs-mg-bQ3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2h5-Zo-qoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-802" y="-306"/>
+        </scene>
+        <!--Video List View Controller-->
+        <scene sceneID="j7I-Jj-2WZ">
+            <objects>
+                <viewController id="AGE-f3-2Zr" customClass="VideoListViewController" customModule="AFChatUISample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pld-d1-XLi"/>
+                        <viewControllerLayoutGuide type="bottom" id="bTl-FL-ao3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XLz-vo-yRD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oml-uH-pOW">
+                                <rect key="frame" x="127" y="318" width="121" height="30"/>
+                                <state key="normal" title="Video Chat Demo"/>
+                                <connections>
+                                    <action selector="videoDemoButtonTapped:" destination="beU-lu-phE" eventType="touchUpInside" id="GrX-MT-khj"/>
+                                    <action selector="videoDemoButtonTapped:" destination="AGE-f3-2Zr" eventType="touchUpInside" id="yck-xS-Jgs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Oml-uH-pOW" firstAttribute="centerY" secondItem="XLz-vo-yRD" secondAttribute="centerY" id="NFn-5g-rPw"/>
+                            <constraint firstItem="Oml-uH-pOW" firstAttribute="centerX" secondItem="XLz-vo-yRD" secondAttribute="centerX" id="e34-9L-XX6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QBj-Cs-b53"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IxW-Ux-JMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="beU-lu-phE" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-78" y="-306"/>
         </scene>
         <!--Live Game View Controller-->
         <scene sceneID="y4o-I4-VbC">
@@ -299,7 +352,7 @@
                 <navigationController id="EpO-UF-HhA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" id="OXl-Xx-K6q"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CkV-s5-miN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -359,5 +412,6 @@
     <resources>
         <image name="gc_screen" width="750" height="1334"/>
         <image name="tabbarMessages" width="24" height="24"/>
+        <image name="tabbarOnAir" width="28" height="28"/>
     </resources>
 </document>

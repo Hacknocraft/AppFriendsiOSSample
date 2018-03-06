@@ -132,9 +132,9 @@ class SeedUsersViewController: BaseViewController, UITableViewDelegate, UITableV
         return footerView
     }
 
-    func cancel() {
+    @objc func cancel() {
 
-        self.dismissVC(completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
     // MARK: Login

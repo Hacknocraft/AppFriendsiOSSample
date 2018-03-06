@@ -43,6 +43,8 @@
 		AF8034951EA03DA400803599 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF80347D1EA03DA400803599 /* UserProfileTableViewCell.swift */; };
 		AF8034961EA03DA400803599 /* UserProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF80347E1EA03DA400803599 /* UserProfileTableViewCell.xib */; };
 		AF8034971EA03DA400803599 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8034801EA03DA400803599 /* UserSearchViewController.swift */; };
+		AFA1DD8D204F115F0079894F /* UIDevice+types.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA1DD8B204F115F0079894F /* UIDevice+types.swift */; };
+		AFA1DD8E204F115F0079894F /* UIView+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA1DD8C204F115F0079894F /* UIView+border.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		AF80347D1EA03DA400803599 /* UserProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewCell.swift; sourceTree = "<group>"; };
 		AF80347E1EA03DA400803599 /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
 		AF8034801EA03DA400803599 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
+		AFA1DD8B204F115F0079894F /* UIDevice+types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+types.swift"; sourceTree = "<group>"; };
+		AFA1DD8C204F115F0079894F /* UIView+border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+border.swift"; sourceTree = "<group>"; };
 		D0725C389F2B8027811B7B52 /* Pods-AppFriendsChatSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsChatSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsChatSample/Pods-AppFriendsChatSample.debug.xcconfig"; sourceTree = "<group>"; };
 		DE547ECE015FF9FA79484F7E /* Pods-AppFriendsChatSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFriendsChatSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFriendsChatSample/Pods-AppFriendsChatSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +152,7 @@
 		AF8034651EA03DA400803599 /* tabs */ = {
 			isa = PBXGroup;
 			children = (
+				AFA1DD8A204F115F0079894F /* extensions */,
 				AF8034661EA03DA400803599 /* Chat */,
 				AF8034791EA03DA400803599 /* game */,
 				AF80347B1EA03DA400803599 /* profile */,
@@ -220,6 +225,16 @@
 			name = resources;
 			sourceTree = "<group>";
 		};
+		AFA1DD8A204F115F0079894F /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AFA1DD8B204F115F0079894F /* UIDevice+types.swift */,
+				AFA1DD8C204F115F0079894F /* UIView+border.swift */,
+			);
+			name = extensions;
+			path = AppFriendsChatSample/extensions;
+			sourceTree = SOURCE_ROOT;
+		};
 		C2C2753EB9C2D8E9CA991BCC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,9 +278,8 @@
 				TargetAttributes = {
 					AF1A710F1DCECCE100778CA8 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = BL6PZ96S5P;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -358,17 +372,16 @@
 				"${BUILT_PRODUCTS_DIR}/AppFriendsFloatingWidget/AppFriendsFloatingWidget.framework",
 				"${PODS_ROOT}/AppFriendsUI/AppFriendsUI.framework",
 				"${BUILT_PRODUCTS_DIR}/Base64/Base64.framework",
-				"${BUILT_PRODUCTS_DIR}/CLTokenInputView/CLTokenInputView.framework",
 				"${BUILT_PRODUCTS_DIR}/Cloudinary/Cloudinary.framework",
 				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
-				"${BUILT_PRODUCTS_DIR}/EZSwiftExtensions/EZSwiftExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/JWT/JWT.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSKImageCropper/RSKImageCropper.framework",
-				"${BUILT_PRODUCTS_DIR}/SlackTextViewController/SlackTextViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -379,17 +392,16 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppFriendsFloatingWidget.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppFriendsUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CLTokenInputView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cloudinary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZSwiftExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKImageCropper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlackTextViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarscreamSocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF8034871EA03DA400803599 /* GCDialogMembersListViewController.swift in Sources */,
+				AFA1DD8E204F115F0079894F /* UIView+border.swift in Sources */,
 				AF8034831EA03DA400803599 /* GCContactTableViewCell.swift in Sources */,
 				AF8034851EA03DA400803599 /* GCDialogContactsPickerViewController.swift in Sources */,
 				AF8034911EA03DA400803599 /* GCReceiptTableViewCell.swift in Sources */,
@@ -421,6 +434,7 @@
 				AF19CA201DED23FC00180A57 /* LoginViewController.swift in Sources */,
 				AF19CA171DED21A500180A57 /* LocalUsersDatabase.swift in Sources */,
 				AF8034971EA03DA400803599 /* UserSearchViewController.swift in Sources */,
+				AFA1DD8D204F115F0079894F /* UIDevice+types.swift in Sources */,
 				AF19CA221DED245F00180A57 /* SeedUsersViewController.swift in Sources */,
 				AF1A71141DCECCE100778CA8 /* AppDelegate.swift in Sources */,
 				AF8034931EA03DA400803599 /* LiveGameViewController.swift in Sources */,
@@ -557,13 +571,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BL6PZ96S5P;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AppFriendsChatSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.AppFriendsChatSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -573,13 +589,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BL6PZ96S5P;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AppFriendsChatSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hacknocraft.AppFriendsChatSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

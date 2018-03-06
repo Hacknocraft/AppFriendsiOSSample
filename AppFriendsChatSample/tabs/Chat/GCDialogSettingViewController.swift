@@ -51,7 +51,7 @@ class GCDialogSettingViewController: HCDialogSettingViewController {
 
     // MARK: - Show Album
 
-    func showAlbum() {
+    @objc func showAlbum() {
 
         let dialog = self.currentDialog()
         let albumVC = HCAlbumViewController(dialogID: dialog.id)
@@ -60,12 +60,12 @@ class GCDialogSettingViewController: HCDialogSettingViewController {
 
     // MARK: - Override AppFriends Class
 
-    override func closeView() {
+    @objc override func closeView() {
 
         if let count = self.navigationController?.viewControllers.count, count > 1 {
             _ = self.navigationController?.popViewController(animated: true)
         } else {
-            self.dismissVC(completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 

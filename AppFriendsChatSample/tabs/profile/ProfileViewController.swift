@@ -12,6 +12,7 @@ import AppFriendsUI
 import AppFriendsCore
 
 import AlamofireImage
+import SwifterSwift
 
 class ProfileViewController: UITableViewController, UserProfileTableViewCellDelegate {
 
@@ -49,7 +50,7 @@ class ProfileViewController: UITableViewController, UserProfileTableViewCellDele
 
         self.tableView.separatorColor = HCColorPalette.tableSeparatorColor
 
-        self.view.backgroundColor = UIColor(r: 13, g: 14, b: 40)
+        self.view.backgroundColor = UIColor(red: 13, green: 14, blue: 40)
 
         self.tableView.register(UINib(nibName: "UserProfileTableViewCell", bundle: nil),
                                 forCellReuseIdentifier: "UserProfileTableViewCell")
@@ -148,7 +149,7 @@ class ProfileViewController: UITableViewController, UserProfileTableViewCellDele
 
     // MARK: - Actions
 
-    func logout(_ sender: AnyObject) {
+    @objc func logout(_ sender: AnyObject) {
 
         AFPushNotification.unregisterDeviceForPushNotification { (error) in
             AFSession.logout { (error) in
@@ -177,13 +178,13 @@ class ProfileViewController: UITableViewController, UserProfileTableViewCellDele
         }
     }
 
-    func chat(_ sender: AnyObject) {
+    @objc func chat(_ sender: AnyObject) {
 
         let chatContainer = HCChatContainerViewController(tabs: [HCStringValues.dialogsTabTitle,
                                                                  HCStringValues.contactsTabTitle])
         let nav = UINavigationController(rootViewController: chatContainer)
         nav.navigationBar.setBackgroundImage(UIImage(named: "0D0F27"), for: .default)
-        self.presentVC(nav)
+        self.present(nav, animated: true, completion: nil)
     }
 
     // MARK: UserProfileTableViewCellDelegate
@@ -204,7 +205,7 @@ class ProfileViewController: UITableViewController, UserProfileTableViewCellDele
                     self.showAlert("Error", message: error?.localizedDescription ?? "")
                     self.tableView.reloadData()
                 } else {
-                    UsersDataBase.sharedInstance.following.removeFirst(userID)
+                    UsersDataBase.sharedInstance.following.removeAll(userID)
                     self.tableView.reloadData()
                 }
             })
@@ -248,7 +249,7 @@ class ProfileViewController: UITableViewController, UserProfileTableViewCellDele
         popup.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
 
         }))
-        self.presentVC(popup)
+        self.present(popup, animated: true, completion: nil)
     }
 
     // MARK: go to chat
