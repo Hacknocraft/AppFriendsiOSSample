@@ -28,7 +28,8 @@ class GCChatViewController: HCDialogChatViewController, GCInfoBannerViewDelegate
         super.viewDidLoad()
 
         if #available(iOS 11.0, *), UIDevice.isIphoneX() {
-            self.view.bounds = self.view.bounds.insetBy(dx: 0, dy: 30)
+            let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+            self.view.bounds = self.view.bounds.insetBy(dx: 0, dy: bottom)
         }
 
         if let dialog = self.currentDialog() {
